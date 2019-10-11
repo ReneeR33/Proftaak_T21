@@ -96,10 +96,20 @@ void loop() {
       fingerPrintScan = finger.createModel();
       if (fingerPrintScan == FINGERPRINT_OK) {
         Serial.println("Created a model");
-        fingerPrintScan = finger.storeModel(2);
-        if (fingerPrintScan == FINGERPRINT_OK) {
-          Serial.println("Stored");
+        // HIER
+        int id = GetFirstFreeSpace();
+        //
+        if (id != -1) {
+          fingerPrintScan = finger.storeModel(id);
+          if (fingerPrintScan == FINGERPRINT_OK) {
+            Serial.print("Stored, id value = ");
+            Serial.println(id);
+          }
         }
+        else{
+          Serial.println("Scanner is full");
+        }
+
       }
       fingerPrintScanProgress = 1;
     }
