@@ -36,6 +36,7 @@ void setup() {
 void loop() {
   buttonPin_1_Value = digitalRead(buttonPin_1);
   buttonPin_2_Value = digitalRead(buttonPin_2);
+  String message = CheckMessage();
 
 
   if (millis() > endTime && readFingerprint == true) {
@@ -112,6 +113,32 @@ void loop() {
 
       }
       fingerPrintScanProgress = 1;
+    }
+    if (buttonPin_2_Value == HIGH) {
+      mode = "OPENLOCK";
+      Serial.println(mode);
+      readFingerprint = true;
+      scanFingerprint = false;
+      delay(500);
+    }
+    if (buttonPin_1_Value == HIGH) {
+      mode = "DELETE_FINGERPRINT";
+      Serial.println(mode);
+      readFingerprint = false;
+      scanFingerprint = false;
+      delay(500);
+    }
+  }
+
+  else if(mode == "DELETE_FINGERPRINT"){
+
+    if(message.startsWith("DELETE:")){
+      message.remove(0,7);
+      int id = message.toInt();
+      if(RemoveFingerprint(id)){
+        Serial.print("Deleted fingeprint with id = ");
+        Serial.println(id);
+       }
     }
     if (buttonPin_2_Value == HIGH) {
       mode = "OPENLOCK";

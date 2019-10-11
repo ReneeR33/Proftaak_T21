@@ -22,6 +22,16 @@ int GetFirstFreeSpace(){
   return -1;
 }
 
+bool RemoveFingerprint(int id){
+  if(id > 0 && id < 11){
+    byte value = 0;
+    finger.deleteModel(id);
+    EEPROM.put(id, value);
+    return true;
+  }
+  return false;
+}
+
 int ReadFingerprint() {
   uint8_t p = finger.getImage();
     if (p != FINGERPRINT_OK)  return -1;
