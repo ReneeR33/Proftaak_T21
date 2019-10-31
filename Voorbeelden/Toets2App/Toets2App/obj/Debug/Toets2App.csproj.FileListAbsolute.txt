@@ -1,0 +1,10 @@
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\bin\Debug\Toets2App.exe.config
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\bin\Debug\Toets2App.exe
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\bin\Debug\Toets2App.pdb
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\obj\Debug\Toets2App.csprojAssemblyReference.cache
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\obj\Debug\Toets2App.Form1.resources
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\obj\Debug\Toets2App.Properties.Resources.resources
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\obj\Debug\Toets2App.csproj.GenerateResource.cache
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\obj\Debug\Toets2App.csproj.CoreCompileInputs.cache
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\obj\Debug\Toets2App.exe
+C:\Users\Renée\Documents\GitHub\Toets1OITP05\Toets2\Toets2App\Toets2App\obj\Debug\Toets2App.pdb
