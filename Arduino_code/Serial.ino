@@ -7,12 +7,12 @@ String CheckMessage()
   while (Serial.available() > 0)
   {
     char incomingByte = (char) Serial.read();
-    if (incomingByte == '|')
+    if (incomingByte == '#')
     {
       messageWrite = true;
       incomingByte = "";
     }
-    else if (incomingByte == '&')
+    else if (incomingByte == '%')
     {
       messageDone = message;
       message = "";

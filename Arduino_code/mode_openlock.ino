@@ -1,16 +1,14 @@
-void openLock(){
-  if (buttonPin_1_Value == HIGH && isOpen == true) {
-      servo.write(0);
+void lock(){
+  if (buttonPin_1_Value == HIGH && isOpen == true) {      
       isOpen = false;
+      closeLock();
       endTimeServo = millis() + 500;
     }
-
-    if (fingerID > 0 && isOpen == false) {
-      servo.write(180);
+    if (fingerID > 0 && isOpen == false) {     
       isOpen = true;
+      openLock();
       endTimeServo = millis() + 500;
     }
-
     if (millis() > endTimeServo) {
       servo.write(90);
     }
@@ -23,4 +21,14 @@ void openLock(){
       switchMode = true;
       delay(500);
     }
+}
+void openLock()
+{
+    //servo.write(180);
+    digitalWrite(13, HIGH);       //test
+}
+void closeLock()
+{
+  //servo.write(0);
+  digitalWrite(13, LOW);    //test
 }

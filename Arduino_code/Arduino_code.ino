@@ -11,7 +11,6 @@ int buttonPin_1_Value;
 int buttonPin_2 = 12;
 int buttonPin_2_Value;
 
-
 bool isOpen = false;
 bool readFingerprint = true;
 bool scanFingerprint = false;
@@ -24,19 +23,34 @@ int fingerID = -1;
 int fingerPrintScan = FINGERPRINT_INVALIDIMAGE;
 int fingerPrintScanProgress = 1;
 
+int pinLock = 13;
+
+
 
 void setup() {
   servo.attach(9);
   servo.write(90);
   pinMode(buttonPin_1, INPUT);
+  pinMode(buttonPin_2, INPUT);
   StartFingerprintscanner();
   Serial.begin(9600);
+  pinMode(13,OUTPUT);                     // test
 }
 
 void loop() {
   buttonPin_1_Value = digitalRead(buttonPin_1);
-  buttonPin_2_Value = digitalRead(buttonPin_2);
   String message = CheckMessage();
+
+  if(message == "LOCK_OPEN")
+  {
+    openLock();
+  }
+  else if(message == "LOCK_CLOSE")
+  {
+    closeLock();
+  }
+  
+  
 
 
   if (millis() > endTime && readFingerprint == true) {
@@ -49,7 +63,7 @@ void loop() {
     fingerPrintScan = finger.getImage();
   }
   if (mode == "OPENLOCK") {
-    openLock();
+    lock();
   }
 
   else if (mode == "ADDFINGERPRINT") {

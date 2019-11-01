@@ -1,0 +1,20 @@
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\bin\Debug\SmartBike.exe.config
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\bin\Debug\SmartBike.exe
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\bin\Debug\SmartBike.pdb
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\obj\Debug\SmartBike.csprojAssemblyReference.cache
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\obj\Debug\SmartBike.Form1.resources
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\obj\Debug\SmartBike.Properties.Resources.resources
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\obj\Debug\SmartBike.csproj.GenerateResource.cache
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\obj\Debug\SmartBike.csproj.CoreCompileInputs.cache
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\obj\Debug\SmartBike.exe
+C:\Users\faasb\Documents\School\Semester 2\T-PTT2\Code\SmartBike\SmartBike\obj\Debug\SmartBike.pdb
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\SmartBike.exe.config
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\SmartBike.exe
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\SmartBike.pdb
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.csprojAssemblyReference.cache
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.Form1.resources
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.Properties.Resources.resources
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.csproj.GenerateResource.cache
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.csproj.CoreCompileInputs.cache
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.exe
+C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.pdb
