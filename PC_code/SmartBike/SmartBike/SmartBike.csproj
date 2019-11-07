@@ -64,7 +64,6 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="LockMyBike.cs" />
-    <Compile Include="Login.cs" />
     <Compile Include="MessageBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

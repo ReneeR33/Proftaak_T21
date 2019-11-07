@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartBike
 {
-    class User
+    public class User
     {
         public string Name { get; private set; }
         public string UserName { get; private set; }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,18 +13,23 @@ namespace SmartBike
 {
     public partial class Form1 : Form
     {
-        List<User> users;
+        private LockMyBike lockMyBike;
 
         Serial serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
-        public Form1()
+        public Form1(LockMyBike LMB)
         {
             //serial.Connect();
+            lockMyBike = LMB;
             this.FormClosed += new FormClosedEventHandler(Form1_FormClosed);
             InitializeComponent();
+            label1.Text = lockMyBike.UserLoggedIn.Name;
+
         }
+        
         void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             //serial.Disconnect();
+            Application.Exit();
         }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -63,9 +69,9 @@ namespace SmartBike
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Database database = new Database();
-            users = database.GetUsers();
-            listBox1.DataSource = users;
+            //Database database = new Database();
+            //users = database.GetUsers();
+            //listBox1.DataSource = users;
         }
     }
 }

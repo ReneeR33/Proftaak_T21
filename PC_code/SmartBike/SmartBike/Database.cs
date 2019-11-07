@@ -7,6 +7,10 @@ using MySql.Data.MySqlClient;
 
 namespace SmartBike
 {
+    //Dit is de klasse voor onze database.
+
+    ///Om verbinding te maken met deze database moet je eerst de MySql.Data plugin downloaden,
+    ///en verbinding maken met vdi.fhict.nl (VPN)
     class Database
     {
         private MySqlConnection connection;
@@ -15,9 +19,6 @@ namespace SmartBike
         private string uid;
         private string password;
 
-        /// <summary>
-        /// Creates a connection with our database.
-        /// </summary>
         public Database()
         {
             this.server = "studmysql01.fhict.local";
@@ -25,7 +26,6 @@ namespace SmartBike
             this.uid = "dbi406377";
             this.password = "lock_my_bike_T21";
             string connectionString = "Server=" + server + ";" + "Uid=" + uid + ";" + "Database=" + database + ";" + "Pwd=" + password + ";";
-            //Server = studmysql01.fhict.local; Uid = dbi406377; Database = dbi406377; Pwd = yourPassword;
 
             this.connection = new MySqlConnection(connectionString);
         }

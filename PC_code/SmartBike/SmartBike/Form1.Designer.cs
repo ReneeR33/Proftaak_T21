@@ -60,7 +60,7 @@
             // 
             this.groupBoxData.Location = new System.Drawing.Point(25, 50);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(296, 176);
+            this.groupBoxData.Size = new System.Drawing.Size(226, 180);
             this.groupBoxData.TabIndex = 1;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "data bike";
