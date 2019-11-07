@@ -74,8 +74,10 @@ namespace SmartBike
                         string name = (string)dataReader["name"];
                         string userName = (string)dataReader["username"];
                         string password = (string)dataReader["password"];
+                        int fingerID = (int)dataReader["finger_id"];
+                        bool isOwner = (bool)dataReader["is_owner"];
 
-                        User user = new User(name, userName, password);
+                        User user = new User(name, userName, password, fingerID, isOwner);
 
                         users.Add(user);
                     }
