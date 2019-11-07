@@ -1,6 +1,6 @@
 ﻿namespace SmartBike
 {
-    partial class Form1
+    partial class FormOwner
     {
         /// <summary>
         /// Required designer variable.

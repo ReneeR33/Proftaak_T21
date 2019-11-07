@@ -11,22 +11,22 @@ using System.Windows.Forms;
 
 namespace SmartBike
 {
-    public partial class Form1 : Form
+    public partial class FormOwner : Form
     {
         private LockMyBike lockMyBike;
 
         Serial serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
-        public Form1(LockMyBike LMB)
+        public FormOwner(LockMyBike LMB)
         {
             //serial.Connect();
             lockMyBike = LMB;
-            this.FormClosed += new FormClosedEventHandler(Form1_FormClosed);
+            this.FormClosed += new FormClosedEventHandler(FormOwner_FormClosed);
             InitializeComponent();
             label1.Text = lockMyBike.UserLoggedIn.Name;
 
         }
         
-        void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        void FormOwner_FormClosed(object sender, FormClosedEventArgs e)
         {
             //serial.Disconnect();
             Application.Exit();

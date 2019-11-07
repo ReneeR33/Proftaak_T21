@@ -24,8 +24,18 @@ namespace SmartBike
             if(lockMyBike.Login(textBoxUsername.Text, textBoxPassword.Text))
             {
                 MessageBox.Show("Login success!");
-                Form1 form1 = new Form1(lockMyBike);
-                form1.Show();
+                if (lockMyBike.UserLoggedIn.IsOwner)
+                {
+                    MessageBox.Show("Logged in as owner");
+                    FormOwner formOwner = new FormOwner(lockMyBike);
+                    formOwner.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Logged in as user");
+                    FormUser formUser = new FormUser(lockMyBike);
+                    formUser.Show();
+                }
                 this.Hide();
             }
         }
