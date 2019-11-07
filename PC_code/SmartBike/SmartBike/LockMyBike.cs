@@ -11,24 +11,29 @@ namespace SmartBike
     {
         private Database database;
         public User UserLoggedIn { get; private set; }
-        public List<User> Users { get; private set; }
+        public List<User> Users { get; private set; } 
         
         public LockMyBike()
         {
             database = new Database();
             Users = database.GetUsers();
         }
-        public int Login(string userName, string password)
+        public bool Login(string userName, string password)
         {
-            foreach (User user in Users)
+            if(Users != null)
             {
-                if (user.UserName == userName && user.Password == password)
+                foreach (User user in Users)
                 {
-                    UserLoggedIn = user;
-                    return 1;
+                    if (user.UserName == userName && user.Password == password)
+                    {
+                        UserLoggedIn = user;
+                        return true;
+                    }
                 }
+
             }
-            return 0;
+            
+            return false;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SmartBike
 
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            if(lockMyBike.Login(textBoxUsername.Text, textBoxPassword.Text) == 1)
+            if(lockMyBike.Login(textBoxUsername.Text, textBoxPassword.Text))
             {
                 MessageBox.Show("Login success!");
                 Form1 form1 = new Form1(lockMyBike);
