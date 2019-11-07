@@ -12,16 +12,18 @@ namespace SmartBike
 {
     public partial class Form1 : Form
     {
+        List<User> users;
+
         Serial serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
         public Form1()
         {
-            serial.Connect();
+            //serial.Connect();
             this.FormClosed += new FormClosedEventHandler(Form1_FormClosed);
             InitializeComponent();
         }
         void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            serial.Disconnect();
+            //serial.Disconnect();
         }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -57,6 +59,13 @@ namespace SmartBike
                     }
                 }
             }
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Database database = new Database();
+            users = database.GetUsers();
+            listBox1.DataSource = users;
         }
     }
 }

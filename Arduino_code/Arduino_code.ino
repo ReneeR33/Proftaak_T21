@@ -51,8 +51,6 @@ void loop() {
   }
   
   
-
-
   if (millis() > endTime && readFingerprint == true) {
 
     fingerID = ReadFingerprint();
