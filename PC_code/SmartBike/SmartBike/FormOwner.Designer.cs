@@ -29,26 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAddUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.listBoxUsers = new System.Windows.Forms.ListBox();
+            this.buttonRemoveUser = new System.Windows.Forms.Button();
+            this.buttonLock = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(31, 255);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(44, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Slot";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // timer1
             // 
@@ -58,28 +50,31 @@
             // 
             this.groupBoxData.Location = new System.Drawing.Point(25, 50);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(226, 180);
+            this.groupBoxData.Size = new System.Drawing.Size(237, 195);
             this.groupBoxData.TabIndex = 1;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "data bike";
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(275, 50);
+            this.groupBox1.Controls.Add(this.buttonRemoveUser);
+            this.groupBox1.Controls.Add(this.buttonAddUser);
+            this.groupBox1.Controls.Add(this.listBoxUsers);
+            this.groupBox1.Location = new System.Drawing.Point(307, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(650, 424);
+            this.groupBox1.Size = new System.Drawing.Size(417, 367);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "users";
             // 
-            // button1
+            // buttonAddUser
             // 
-            this.button1.Location = new System.Drawing.Point(41, 351);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "add user";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Location = new System.Drawing.Point(96, 330);
+            this.buttonAddUser.Name = "buttonAddUser";
+            this.buttonAddUser.Size = new System.Drawing.Size(102, 22);
+            this.buttonAddUser.TabIndex = 1;
+            this.buttonAddUser.Text = "add user";
+            this.buttonAddUser.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -101,7 +96,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(41, 390);
+            this.button3.Location = new System.Drawing.Point(115, 322);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 27);
             this.button3.TabIndex = 5;
@@ -109,35 +104,63 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
+            // listBoxUsers
+            // 
+            this.listBoxUsers.FormattingEnabled = true;
+            this.listBoxUsers.Location = new System.Drawing.Point(28, 29);
+            this.listBoxUsers.Name = "listBoxUsers";
+            this.listBoxUsers.Size = new System.Drawing.Size(358, 290);
+            this.listBoxUsers.TabIndex = 0;
+            // 
+            // buttonRemoveUser
+            // 
+            this.buttonRemoveUser.Location = new System.Drawing.Point(204, 330);
+            this.buttonRemoveUser.Name = "buttonRemoveUser";
+            this.buttonRemoveUser.Size = new System.Drawing.Size(102, 22);
+            this.buttonRemoveUser.TabIndex = 2;
+            this.buttonRemoveUser.Text = "remove user";
+            this.buttonRemoveUser.UseVisualStyleBackColor = true;
+            // 
+            // buttonLock
+            // 
+            this.buttonLock.Location = new System.Drawing.Point(30, 263);
+            this.buttonLock.Name = "buttonLock";
+            this.buttonLock.Size = new System.Drawing.Size(109, 27);
+            this.buttonLock.TabIndex = 6;
+            this.buttonLock.Text = "open lock";
+            this.buttonLock.UseVisualStyleBackColor = true;
+            this.buttonLock.Click += new System.EventHandler(this.ButtonLock_Click);
+            // 
             // FormOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 486);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(749, 400);
+            this.Controls.Add(this.buttonLock);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxData);
-            this.Controls.Add(this.checkBox1);
             this.Name = "FormOwner";
             this.Text = "Form1";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.GroupBox groupBoxData;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox listBoxUsers;
+        private System.Windows.Forms.Button buttonRemoveUser;
+        private System.Windows.Forms.Button buttonLock;
     }
 }
 

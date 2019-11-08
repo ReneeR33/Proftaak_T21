@@ -8,12 +8,13 @@ namespace SmartBike
 {
     public class User
     {
+        public int ID { get; private set; }
         public string Name { get; private set; }
         public string UserName { get; private set; }
         public string Password { get; private set; }
         public int FingerID { get; private set; }
         public bool IsOwner { get; private set; }
-        public User(string name, string userName, string password, int fingerID, bool isOwner)
+        public User(int id, string name, string userName, string password, int fingerID, bool isOwner)
         {
             Name = name;
             UserName = userName;
@@ -24,8 +25,8 @@ namespace SmartBike
         public override string ToString()
         {
             return "Name: " + Name + ","
-                 + " Username: " + UserName + ","
-                 + " Password: " + Password;
+                 + " FingerID: " + FingerID.ToString() + ","
+                 + " ID: " + FingerID.ToString();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace SmartBike
             lockMyBike = LMB;
             this.FormClosed += new FormClosedEventHandler(FormOwner_FormClosed);
             InitializeComponent();
+            listBoxUsers.DataSource = lockMyBike.Users;
             label1.Text = lockMyBike.UserLoggedIn.Name;
 
         }
@@ -51,6 +52,20 @@ namespace SmartBike
             //Database database = new Database();
             //users = database.GetUsers();
             //listBox1.DataSource = users;
+        }
+
+        private void ButtonLock_Click(object sender, EventArgs e)
+        {
+            if(buttonLock.Text == "open lock")
+            {
+                lockMyBike.OpenLock();
+                buttonLock.Text = "close lock";
+            }
+            else
+            {
+                lockMyBike.CloseLock();
+                buttonLock.Text = "open lock";
+            }
         }
     }
 }

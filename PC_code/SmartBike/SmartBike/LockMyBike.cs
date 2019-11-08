@@ -13,8 +13,8 @@ namespace SmartBike
 
         private Database database;
         public User UserLoggedIn { get; private set; }
-        public List<User> Users { get; private set; } 
-        
+        public List<User> Users { get; private set; }
+
         public LockMyBike()
         {
             serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
@@ -43,10 +43,17 @@ namespace SmartBike
             ///!!!!!
         }
 
+        public void OpenLock()
+        {
+            serial.Connect();
+            serial.SendMessage("OPEN_LOCK"); 
+            serial.Disconnect();
+        }
+
         public void CloseLock()
         {
             serial.Connect();
-            serial.SendMessage("CLOSELOCK"); //voorbeeld
+            serial.SendMessage("CLOSE_LOCK"); 
             serial.Disconnect();
         }
 

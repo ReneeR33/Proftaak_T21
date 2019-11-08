@@ -71,13 +71,14 @@ namespace SmartBike
                 {
                     try
                     {
+                        int id = (int)dataReader["id"];
                         string name = (string)dataReader["name"];
                         string userName = (string)dataReader["username"];
                         string password = (string)dataReader["password"];
                         int fingerID = (int)dataReader["finger_id"];
                         bool isOwner = (bool)dataReader["is_owner"];
 
-                        User user = new User(name, userName, password, fingerID, isOwner);
+                        User user = new User(id, name, userName, password, fingerID, isOwner);
 
                         users.Add(user);
                     }
@@ -92,6 +93,15 @@ namespace SmartBike
             }
 
             return users;
+        }
+        void RemoveUser(User user)
+        {
+            string query = "DELETE FROM user WHERE id = @id;";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@id", user.ID);
+            this.Connect();
+            cmd.ExecuteScalar();
+            this.Disconnect();
         }
     }
 
