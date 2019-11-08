@@ -55,11 +55,7 @@ void loop() {
     endTime = millis() + 50;
   }
 
-  if(Message != ""){
-    Serial.println(Message);
-  }
- 
-  if (mode == "OPENLOCK") {
+ if (mode == "OPENLOCK") {
     lock();
   }
 
@@ -67,11 +63,9 @@ void loop() {
     addFingerprint();
   }
 
-  else if (mode == "DELETE_FINGERPRINT")
+  if (Message.startsWith("REMOVE_FINGERPRINT:"))
   {
     removeFingerprint();
 
   }
-
-
 }

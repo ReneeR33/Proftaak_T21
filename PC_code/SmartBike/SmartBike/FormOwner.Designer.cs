@@ -34,11 +34,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.listBoxUsers = new System.Windows.Forms.ListBox();
             this.buttonRemoveUser = new System.Windows.Forms.Button();
             this.buttonLock = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,25 +84,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "username";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(90, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 22);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "logout";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(115, 322);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 27);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "test";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            // 
             // listBoxUsers
             // 
             this.listBoxUsers.FormattingEnabled = true;
@@ -120,10 +100,11 @@
             this.buttonRemoveUser.TabIndex = 2;
             this.buttonRemoveUser.Text = "remove user";
             this.buttonRemoveUser.UseVisualStyleBackColor = true;
+            this.buttonRemoveUser.Click += new System.EventHandler(this.ButtonRemoveUser_Click);
             // 
             // buttonLock
             // 
-            this.buttonLock.Location = new System.Drawing.Point(30, 263);
+            this.buttonLock.Location = new System.Drawing.Point(25, 264);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(109, 27);
             this.buttonLock.TabIndex = 6;
@@ -131,13 +112,21 @@
             this.buttonLock.UseVisualStyleBackColor = true;
             this.buttonLock.Click += new System.EventHandler(this.ButtonLock_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(90, 16);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(79, 22);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "logout";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // FormOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 400);
             this.Controls.Add(this.buttonLock);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -156,11 +145,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBoxUsers;
         private System.Windows.Forms.Button buttonRemoveUser;
         private System.Windows.Forms.Button buttonLock;
+        private System.Windows.Forms.Button button2;
     }
 }
 

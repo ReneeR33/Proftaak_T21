@@ -18,7 +18,7 @@ void lock() {
     mode = "ADDFINGERPRINT";
     Serial.println(mode);
     readFingerprint = false;
-    scanFingerprint = true;
+    //scanFingerprint = true;
     switchMode = true;
     delay(500);
   }

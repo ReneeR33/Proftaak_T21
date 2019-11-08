@@ -94,11 +94,11 @@ namespace SmartBike
 
             return users;
         }
-        void RemoveUser(User user)
+        public void RemoveUser(User user)
         {
-            string query = "DELETE FROM user WHERE id = @id;";
+            string query = "DELETE FROM `user` WHERE `user`.`id` = @param_id;";
             MySqlCommand cmd = new MySqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@id", user.ID);
+            cmd.Parameters.AddWithValue("@param_id", user.ID);
             this.Connect();
             cmd.ExecuteScalar();
             this.Disconnect();

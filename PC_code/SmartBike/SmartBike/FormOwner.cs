@@ -67,5 +67,15 @@ namespace SmartBike
                 buttonLock.Text = "open lock";
             }
         }
+
+        private void ButtonRemoveUser_Click(object sender, EventArgs e)
+        {
+            if(listBoxUsers.SelectedIndex != -1)
+            {
+                lockMyBike.RemoveUser(lockMyBike.Users[listBoxUsers.SelectedIndex]);
+                listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
+                MessageBox.Show("Deleted");
+            }
+        }
     }
 }

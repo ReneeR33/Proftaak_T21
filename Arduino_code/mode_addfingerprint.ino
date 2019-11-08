@@ -1,4 +1,5 @@
 void addFingerprint(){
+  fingerPrintScan = finger.getImage();
   if (fingerPrintScan == FINGERPRINT_OK && fingerPrintScanProgress < 3) {
       fingerPrintScan = finger.image2Tz(fingerPrintScanProgress);
       if (fingerPrintScan == FINGERPRINT_OK) {
@@ -34,14 +35,14 @@ void addFingerprint(){
       mode = "OPENLOCK";
       Serial.println(mode);
       readFingerprint = true;
-      scanFingerprint = false;
+      //scanFingerprint = false;
       delay(500);
     }
     if (buttonPin_1_Value == HIGH) {
       mode = "DELETE_FINGERPRINT";
       Serial.println(mode);
       readFingerprint = false;
-      scanFingerprint = false;
+      //scanFingerprint = false;
       delay(500);
     }
 }

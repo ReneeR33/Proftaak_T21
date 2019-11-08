@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace SmartBike
 {
@@ -38,9 +39,22 @@ namespace SmartBike
             
             return false;
         }
-        public void AddUser()
+
+        public void AddUser(User user)
         {
-            ///!!!!!
+
+        }
+        
+        public void RemoveUser(User user)
+        {
+            if(user != null)
+            {
+                serial.Connect();
+                serial.SendMessage("REMOVE_FINGERPRINT:" + user.FingerID.ToString());
+                serial.Disconnect();
+                database.RemoveUser(user);
+                Users = database.GetUsers();
+            }
         }
 
         public void OpenLock()

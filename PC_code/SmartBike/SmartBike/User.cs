@@ -16,6 +16,7 @@ namespace SmartBike
         public bool IsOwner { get; private set; }
         public User(int id, string name, string userName, string password, int fingerID, bool isOwner)
         {
+            ID = id;
             Name = name;
             UserName = userName;
             Password = password;
@@ -26,7 +27,7 @@ namespace SmartBike
         {
             return "Name: " + Name + ","
                  + " FingerID: " + FingerID.ToString() + ","
-                 + " ID: " + FingerID.ToString();
+                 + " ID: " + ID.ToString();
         }
     }
 }
