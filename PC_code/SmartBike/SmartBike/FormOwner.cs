@@ -15,10 +15,8 @@ namespace SmartBike
     {
         private LockMyBike lockMyBike;
 
-        Serial serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
         public FormOwner(LockMyBike LMB)
         {
-            //serial.Connect();
             lockMyBike = LMB;
             this.FormClosed += new FormClosedEventHandler(FormOwner_FormClosed);
             InitializeComponent();
@@ -28,43 +26,24 @@ namespace SmartBike
         
         void FormOwner_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //serial.Disconnect();
             Application.Exit();
         }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked == true)
-            {
-                serial.SendMessage("LOCK_OPEN");
-            }
-            else if(checkBox1.Checked == false)
-            {
-                serial.SendMessage("LOCK_CLOSE");
-            }
+            //if(checkBox1.Checked == true)
+            //{
+            //    serial.SendMessage("LOCK_OPEN");
+            //}
+            //else if(checkBox1.Checked == false)
+            //{
+            //    serial.SendMessage("LOCK_CLOSE");
+            //}
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            string[] messages = serial.ReadMessages();
-            if (messages != null && messages.Length != 0)
-            {
-                foreach (string message in messages)
-                {
-                    if (message == "")
-                    {
-                        //
-                    }
-                    else if(message == "")
-                    {
-
-                    }
-                    else if (message == "")
-                    {
-                        //
-                    }
-                }
-            }
+            //niet nodig
         }
 
         private void Button3_Click(object sender, EventArgs e)

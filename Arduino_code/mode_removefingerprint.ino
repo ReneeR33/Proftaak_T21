@@ -7,7 +7,7 @@ void removeFingerprint(){
         Serial.println(id);
        }
     }
-    if (buttonPin_2_Value == HIGH) {
+    if (message == HIGH) {
       mode = "OPENLOCK";
       Serial.println(mode);
       readFingerprint = true;

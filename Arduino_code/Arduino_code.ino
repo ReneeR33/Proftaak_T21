@@ -1,15 +1,25 @@
+//--FINGERPRINT--
+//---------------
+// BLACK - GND
+// RED - 5V
+// GREEN - 2
+// WHITE - 3
+//---------------
+
 #include <Servo.h>
 #include <Adafruit_Fingerprint.h>
-Servo servo;
 
+#define buttonPin 7
+#define servoPin 9
+
+Servo servo;
 SoftwareSerial mySerial(2, 3);
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
 String mode = "OPENLOCK";
 int buttonPin_1 = 7;
 int buttonPin_1_Value;
-int buttonPin_2 = 12;
-int buttonPin_2_Value;
+String Message;
 
 bool isOpen = false;
 bool readFingerprint = true;
@@ -25,41 +35,30 @@ int fingerPrintScanProgress = 1;
 
 int pinLock = 13;
 
-
-
 void setup() {
   servo.attach(9);
   servo.write(90);
   pinMode(buttonPin_1, INPUT);
-  pinMode(buttonPin_2, INPUT);
+  //pinMode(buttonPin_2, INPUT);
   StartFingerprintscanner();
-  Serial.begin(9600);
-  pinMode(13,OUTPUT);                     // test
+  Serial.begin(9600);  // test
+  pinMode(13, OUTPUT);
 }
 
 void loop() {
   buttonPin_1_Value = digitalRead(buttonPin_1);
-  String message = CheckMessage();
-
-  if(message == "LOCK_OPEN")
-  {
-    openLock();
-  }
-  else if(message == "LOCK_CLOSE")
-  {
-    closeLock();
-  }
+  Message = CheckMessage();
   
-  
-  if (millis() > endTime && readFingerprint == true) {
+ if (millis() > endTime && readFingerprint == true) {
 
     fingerID = ReadFingerprint();
     endTime = millis() + 50;
   }
 
-  if (scanFingerprint == true) {
-    fingerPrintScan = finger.getImage();
+  if(Message != ""){
+    Serial.println(Message);
   }
+ 
   if (mode == "OPENLOCK") {
     lock();
   }
@@ -69,7 +68,7 @@ void loop() {
   }
 
   else if (mode == "DELETE_FINGERPRINT")
- {
+  {
     removeFingerprint();
 
   }

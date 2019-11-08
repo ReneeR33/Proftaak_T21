@@ -6,7 +6,7 @@ String CheckMessage()
   String messageDone = "";
   while (Serial.available() > 0)
   {
-    char incomingByte = (char) Serial.read();
+    char incomingByte = Serial.read();
     if (incomingByte == '#')
     {
       messageWrite = true;

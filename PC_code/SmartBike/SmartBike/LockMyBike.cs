@@ -9,12 +9,15 @@ namespace SmartBike
     //Dit is de hoofdklasse voor ons programma
     public class LockMyBike
     {
+        private Serial serial;
+
         private Database database;
         public User UserLoggedIn { get; private set; }
         public List<User> Users { get; private set; } 
         
         public LockMyBike()
         {
+            serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
             database = new Database();
             Users = database.GetUsers();
         }
@@ -35,5 +38,40 @@ namespace SmartBike
             
             return false;
         }
+        public void AddUser()
+        {
+            ///!!!!!
+        }
+
+        public void CloseLock()
+        {
+            serial.Connect();
+            serial.SendMessage("CLOSELOCK"); //voorbeeld
+            serial.Disconnect();
+        }
+
+        //nodig?
+        //public void UseIncomingMessages()
+        //{
+        //    string[] messages = serial.ReadMessages();
+        //    if (messages != null && messages.Length != 0)
+        //    {
+        //        foreach (string message in messages)
+        //        {
+        //            if (message == "")
+        //            {
+        //                //
+        //            }
+        //            else if (message == "")
+        //            {
+
+        //            }
+        //            else if (message == "")
+        //            {
+        //                //
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

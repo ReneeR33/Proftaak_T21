@@ -30,7 +30,7 @@ void addFingerprint(){
       }
       fingerPrintScanProgress = 1;
     }
-    if (buttonPin_2_Value == HIGH) {
+    if (message == "NEXT") {
       mode = "OPENLOCK";
       Serial.println(mode);
       readFingerprint = true;

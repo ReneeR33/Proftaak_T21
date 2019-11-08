@@ -65,16 +65,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(342, 50);
+            this.groupBox1.Location = new System.Drawing.Point(275, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(583, 414);
+            this.groupBox1.Size = new System.Drawing.Size(650, 424);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "users";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(167, 328);
+            this.button1.Location = new System.Drawing.Point(41, 351);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 33);
             this.button1.TabIndex = 1;
@@ -101,7 +101,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(167, 367);
+            this.button3.Location = new System.Drawing.Point(41, 390);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 27);
             this.button3.TabIndex = 5;
@@ -109,7 +109,7 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // Form1
+            // FormOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,7 +121,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxData);
             this.Controls.Add(this.checkBox1);
-            this.Name = "Form1";
+            this.Name = "FormOwner";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
