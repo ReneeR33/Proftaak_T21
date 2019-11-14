@@ -9,13 +9,13 @@
 #include <Servo.h>
 #include <Adafruit_Fingerprint.h>
 
+#define ledPin 5
 #define buttonPin 7
 #define servoPin 9
 
 enum State {
   OPEN_LOCK,
   ADD_FINGERPRINT,
-  REMOVE_FINGERPRINT
 };
 
 enum LockState {
@@ -34,30 +34,21 @@ Servo servo;
 SoftwareSerial mySerial(2, 3);
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
-int buttonPinValue;
 String Message;
+unsigned long endTime = 0;
+int fingerID = -1;
+
+int buttonPinValue;
 
 State state = OPEN_LOCK;
 LockState lockState = LOCKED;
 Event event;
-//bool readFingerprint = true;
-//bool scanFingerprint = false;
-bool fingerprintDetected = false;
-bool switchMode = false;
-unsigned long endTime = 0;
-unsigned long endTimeServo = 0;
-
-int fingerID = -1;
-int fingerPrintScan = FINGERPRINT_INVALIDIMAGE;
-int fingerPrintScanProgress = 1;
-
-//int pinLock = 13;
 
 void setup() {
   servo.attach(9);
   servo.write(90);
   pinMode(buttonPin, INPUT);
-  pinMode(13, OUTPUT);
+  pinMode(ledPin, OUTPUT);
   StartFingerprintscanner();
 
   Serial.begin(9600);  // test
@@ -73,7 +64,9 @@ void loop() {
     endTime = millis() + 50;
   }
   Lock();
-
+  if(Message != ""){
+    Serial.println(Message);
+  }
   if (buttonPinValue == HIGH) {
     event = BUTTON_PRESSED;
   }
@@ -96,6 +89,19 @@ void loop() {
       }
       break;
     case MESSAGE_RECEIVED:
+      if (Message == "STATE:OPEN_LOCK") {
+        state = OPEN_LOCK;
+      }
+      else if (Message == "STATE:ADD_FINGERPRINT") {
+        state = ADD_FINGERPRINT;
+      }
+      else if (Message.startsWith("REMOVE_FINGERPRINT:")) {
+        Message.remove(0, 19);
+        int id = Message.toInt();
+        if(id > 0){
+          RemoveFingerprint(id);
+        }
+      }
       break;
     case FINGER_DETECTED:
       switch (state) {
@@ -105,18 +111,8 @@ void loop() {
       }
       break;
   }
- 
+
   if (state == ADD_FINGERPRINT) {
     addFingerprint();
-  }
-
-  else if (state == REMOVE_FINGERPRINT) {
-    removeFingerprint();
-  }
-
-  if (Message.startsWith("REMOVE_FINGERPRINT:"))
-  {
-    removeFingerprint();
-
   }
 }

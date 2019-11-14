@@ -1,7 +1,6 @@
 #include <Adafruit_Fingerprint.h>
 #include <EEPROM.h>
 
-
 void StartFingerprintscanner() {
   
   while (!Serial); 
@@ -27,6 +26,10 @@ bool RemoveFingerprint(int id){
     byte value = 0;
     finger.deleteModel(id);
     EEPROM.put(id, value);
+
+    Serial.print("Deleted fingeprint with id = ");
+    Serial.println(id);
+    
     return true;
   }
   return false;
