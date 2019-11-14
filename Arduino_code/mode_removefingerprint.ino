@@ -8,11 +8,12 @@ void removeFingerprint(){
         Serial.println(id);
        }
     }
-    if (message == "HMMMMMMMMM") {
+    /*if (message == "HMMMMMMMMM") {
       mode = "OPENLOCK";
       Serial.println(mode);
       readFingerprint = true;
       //scanFingerprint = false;
       delay(500);
     }
+    */
 }

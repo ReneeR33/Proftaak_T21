@@ -31,6 +31,7 @@ void addFingerprint(){
       }
       fingerPrintScanProgress = 1;
     }
+    /*
     if (message == "NEXT") {
       mode = "OPENLOCK";
       Serial.println(mode);
@@ -38,11 +39,12 @@ void addFingerprint(){
       //scanFingerprint = false;
       delay(500);
     }
-    if (buttonPin_1_Value == HIGH) {
+    if (buttonPin_Value == HIGH) {
       mode = "DELETE_FINGERPRINT";
       Serial.println(mode);
       readFingerprint = false;
       //scanFingerprint = false;
       delay(500);
     }
+    */
 }
