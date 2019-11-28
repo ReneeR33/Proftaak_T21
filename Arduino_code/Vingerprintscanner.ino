@@ -29,6 +29,7 @@ bool RemoveFingerprint(int id){
 
     Serial.print("Deleted fingeprint with id = ");
     Serial.println(id);
+    Serial.println("#DELETION_SUCCESS%");
     
     return true;
   }

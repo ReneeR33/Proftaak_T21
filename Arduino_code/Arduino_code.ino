@@ -64,7 +64,7 @@ void loop() {
     endTime = millis() + 50;
   }
   Lock();
-  if(Message != ""){
+  if (Message != "") {
     Serial.println(Message);
   }
   if (buttonPinValue == HIGH) {
@@ -98,9 +98,17 @@ void loop() {
       else if (Message.startsWith("REMOVE_FINGERPRINT:")) {
         Message.remove(0, 19);
         int id = Message.toInt();
-        if(id > 0){
+        if (id > 0) {
           RemoveFingerprint(id);
         }
+      }
+      else if (Message == "HALLO") {
+        Serial.print("#HALLO_APP%");
+      }
+      else if (Message == "GET_LOCKSTATE"){
+        Serial.print("#LOCKSTATE:");
+        Serial.print(lockState);
+        Serial.print("%");
       }
       break;
     case FINGER_DETECTED:

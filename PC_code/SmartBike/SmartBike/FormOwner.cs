@@ -67,6 +67,17 @@ namespace SmartBike
                 buttonLock.Text = "open lock";
             }
         }
+        private void ButtonAddUser_Click(object sender, EventArgs e)
+        {
+            FormAddUser formAddUser = new FormAddUser();
+            DialogResult result = formAddUser.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                //User user = new User("Bobbeh", "NO", "p33", -1, false);
+                //lockMyBike.AddUser(user);
+            }
+        }
 
         private void ButtonRemoveUser_Click(object sender, EventArgs e)
         {
@@ -77,5 +88,12 @@ namespace SmartBike
                 MessageBox.Show("Deleted");
             }
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            lockMyBike.Test();
+        }
+
+        
     }
 }
