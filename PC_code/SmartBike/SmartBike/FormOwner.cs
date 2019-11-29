@@ -74,8 +74,10 @@ namespace SmartBike
 
             if(result == DialogResult.OK)
             {
-                //User user = new User("Bobbeh", "NO", "p33", -1, false);
-                //lockMyBike.AddUser(user);
+                User user = new User(formAddUser.Name, formAddUser.UserName, formAddUser.PassWord, -1, formAddUser.IsOwner);
+                lockMyBike.AddUser(user);
+                listBoxUsers.DataSource = null;
+                listBoxUsers.DataSource = lockMyBike.Users; 
             }
         }
 
@@ -94,6 +96,21 @@ namespace SmartBike
             lockMyBike.Test();
         }
 
-        
+        private void ListBoxUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxUsers.SelectedIndex > -1)
+            {
+                User selectedUser = lockMyBike.Users[listBoxUsers.SelectedIndex];
+                if (selectedUser.FingerID == -1) buttonAddFingerprint.Enabled = true;
+                else buttonAddFingerprint.Enabled = false;
+            }
+            else buttonAddFingerprint.Enabled = false;
+        }
+
+        private void ButtonAddFingerprint_Click(object sender, EventArgs e)
+        {
+            FormAddFingerprint  formAddFingerprint = new FormAddFingerprint();
+            formAddFingerprint.Show();
+        }
     }
 }

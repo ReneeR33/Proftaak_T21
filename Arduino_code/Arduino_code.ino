@@ -6,12 +6,30 @@
 // WHITE - 3
 //---------------
 
+#include <Keypad.h>
 #include <Servo.h>
 #include <Adafruit_Fingerprint.h>
 
-#define ledPin 5
-#define buttonPin 7
-#define servoPin 9
+#define ledPin 10
+#define ledPin2 13
+#define buttonPin 12
+#define servoPin 11
+
+const byte ROWS = 4; //four rows
+const byte COLS = 4; //four columns
+
+//keypad
+char hexaKeys[ROWS][COLS] = {
+  {'1', '2', '3', 'A'},
+  {'4', '5', '6', 'B'},
+  {'7', '8', '9', 'C'},
+  {'*', '0', '#', 'D'}
+};
+byte rowPins[ROWS] = {9, 8, 7, 6}; 
+byte colPins[COLS] = {5, 4, 3, 2}; 
+
+Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
+//////////////////////////////////////////////////////////////////////////////
 
 enum State {
   OPEN_LOCK,
@@ -31,8 +49,8 @@ enum Event {
 };
 
 Servo servo;
-SoftwareSerial mySerial(2, 3);
-Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
+//SoftwareSerial mySerial(2, 3);
+//Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
 String Message;
 unsigned long endTime = 0;
@@ -45,10 +63,11 @@ LockState lockState = LOCKED;
 Event event;
 
 void setup() {
-  servo.attach(9);
+  servo.attach(servoPin);
   servo.write(90);
   pinMode(buttonPin, INPUT);
   pinMode(ledPin, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
   StartFingerprintscanner();
 
   Serial.begin(9600);  // test
@@ -58,11 +77,14 @@ void loop() {
   buttonPinValue = digitalRead(buttonPin);
   Message = CheckMessage();
 
-  if (millis() > endTime && state == OPEN_LOCK) {
+  fingerID = ReadFingerprintK();
+  /*if (millis() > endTime && state == OPEN_LOCK) {
 
     fingerID = ReadFingerprint();
     endTime = millis() + 50;
   }
+  */
+  
   Lock();
   if (Message != "") {
     Serial.println(Message);
@@ -99,7 +121,7 @@ void loop() {
         Message.remove(0, 19);
         int id = Message.toInt();
         if (id > 0) {
-          RemoveFingerprint(id);
+          //RemoveFingerprint(id);
         }
       }
       else if (Message == "HALLO") {
@@ -121,6 +143,6 @@ void loop() {
   }
 
   if (state == ADD_FINGERPRINT) {
-    addFingerprint();
+    addFingerprintK();
   }
 }

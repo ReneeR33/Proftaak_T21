@@ -41,6 +41,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.labelLocked = new System.Windows.Forms.Label();
             this.labelConnected = new System.Windows.Forms.Label();
+            this.buttonAddFingerprint = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,13 +53,14 @@
             // 
             this.groupBoxData.Location = new System.Drawing.Point(25, 50);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(237, 195);
+            this.groupBoxData.Size = new System.Drawing.Size(263, 220);
             this.groupBoxData.TabIndex = 1;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "data bike";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonAddFingerprint);
             this.groupBox1.Controls.Add(this.buttonRemoveUser);
             this.groupBox1.Controls.Add(this.buttonAddUser);
             this.groupBox1.Controls.Add(this.listBoxUsers);
@@ -71,7 +73,7 @@
             // 
             // buttonRemoveUser
             // 
-            this.buttonRemoveUser.Location = new System.Drawing.Point(204, 330);
+            this.buttonRemoveUser.Location = new System.Drawing.Point(133, 328);
             this.buttonRemoveUser.Name = "buttonRemoveUser";
             this.buttonRemoveUser.Size = new System.Drawing.Size(102, 22);
             this.buttonRemoveUser.TabIndex = 2;
@@ -81,7 +83,7 @@
             // 
             // buttonAddUser
             // 
-            this.buttonAddUser.Location = new System.Drawing.Point(96, 330);
+            this.buttonAddUser.Location = new System.Drawing.Point(25, 328);
             this.buttonAddUser.Name = "buttonAddUser";
             this.buttonAddUser.Size = new System.Drawing.Size(102, 22);
             this.buttonAddUser.TabIndex = 1;
@@ -96,6 +98,7 @@
             this.listBoxUsers.Name = "listBoxUsers";
             this.listBoxUsers.Size = new System.Drawing.Size(358, 290);
             this.listBoxUsers.TabIndex = 0;
+            this.listBoxUsers.SelectedIndexChanged += new System.EventHandler(this.ListBoxUsers_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -108,7 +111,7 @@
             // 
             // buttonLock
             // 
-            this.buttonLock.Location = new System.Drawing.Point(76, 251);
+            this.buttonLock.Location = new System.Drawing.Point(78, 283);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(109, 25);
             this.buttonLock.TabIndex = 6;
@@ -127,7 +130,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(76, 339);
+            this.button1.Location = new System.Drawing.Point(107, 337);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 25);
             this.button1.TabIndex = 7;
@@ -153,11 +156,22 @@
             this.labelConnected.TabIndex = 9;
             this.labelConnected.Text = "connected";
             // 
+            // buttonAddFingerprint
+            // 
+            this.buttonAddFingerprint.Enabled = false;
+            this.buttonAddFingerprint.Location = new System.Drawing.Point(295, 327);
+            this.buttonAddFingerprint.Name = "buttonAddFingerprint";
+            this.buttonAddFingerprint.Size = new System.Drawing.Size(91, 23);
+            this.buttonAddFingerprint.TabIndex = 3;
+            this.buttonAddFingerprint.Text = "add fingerprint";
+            this.buttonAddFingerprint.UseVisualStyleBackColor = true;
+            this.buttonAddFingerprint.Click += new System.EventHandler(this.ButtonAddFingerprint_Click);
+            // 
             // FormOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 400);
+            this.ClientSize = new System.Drawing.Size(742, 395);
             this.Controls.Add(this.labelConnected);
             this.Controls.Add(this.labelLocked);
             this.Controls.Add(this.button1);
@@ -187,6 +201,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelLocked;
         private System.Windows.Forms.Label labelConnected;
+        private System.Windows.Forms.Button buttonAddFingerprint;
     }
 }
 

@@ -11,20 +11,28 @@ namespace SmartBike
     //Dit is de hoofdklasse voor ons programma
     public class LockMyBike
     {
-        //public bool Locked { get; private set; }
-        //public bool Connected { get; private set; }
+        public enum AddingFingerprintStatus
+        {
+            FirstScanned,
+            SecondScanned,
+            Created,
+            NotAddingFingerprint
+        };
+
+        public AddingFingerprintStatus addingFingerprintStatus;
         private Serial serial;
 
         private Database database;
         public User UserLoggedIn { get; private set; }
         public List<User> Users { get; private set; }
+
       
         public LockMyBike()
         {
             serial = new Serial("COM5", 9600, new MessageBuilder('#', '%'));
             database = new Database();
             Users = database.GetUsers();
-            //Connected = this.GetLockState();
+            addingFingerprintStatus = AddingFingerprintStatus.NotAddingFingerprint;
         }
         public bool Login(string userName, string password)
         {
@@ -42,10 +50,15 @@ namespace SmartBike
             }
             return false;
         }
+        //public AddingFingerprintStatus GetFingerprintStatus()
+        //{
+        //    //
+        //}
 
         public void AddUser(User user)
         {
             database.addUser(user);
+            Users = database.GetUsers();
         }
         
         public void RemoveUser(User user)
@@ -65,7 +78,6 @@ namespace SmartBike
                 Users = database.GetUsers();
             }
         }
-
 
         public void OpenLock()
         {

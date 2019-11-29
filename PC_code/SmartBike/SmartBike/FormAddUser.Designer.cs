@@ -96,6 +96,7 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(132, 77);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '•';
             this.textBoxPassword.Size = new System.Drawing.Size(176, 20);
             this.textBoxPassword.TabIndex = 7;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
@@ -113,6 +114,7 @@
             // 
             this.textBoxConfirmPassword.Location = new System.Drawing.Point(132, 105);
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
+            this.textBoxConfirmPassword.PasswordChar = '•';
             this.textBoxConfirmPassword.Size = new System.Drawing.Size(176, 20);
             this.textBoxConfirmPassword.TabIndex = 9;
             this.textBoxConfirmPassword.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
@@ -142,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 200);
+            this.ClientSize = new System.Drawing.Size(339, 204);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.checkBoxIsOwner);
             this.Controls.Add(this.textBoxConfirmPassword);
@@ -155,7 +157,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormAddUser";
-            this.Text = "FormAddUser";
+            this.Text = "add user";
             this.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.ResumeLayout(false);
             this.PerformLayout();

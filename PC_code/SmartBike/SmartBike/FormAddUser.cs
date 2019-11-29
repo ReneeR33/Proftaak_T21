@@ -23,11 +23,16 @@ namespace SmartBike
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            if ((textBoxName.Text != "" &&
-                textBoxUserName.Text != "" &&
-                textBoxPassword.Text != "" &&
-                textBoxConfirmPassword.Text != "") &&
-                textBoxPassword.Text == textBoxConfirmPassword.Text) buttonCreate.Enabled = true;
+            Name = textBoxName.Text;
+            UserName = textBoxUserName.Text;
+            UserName = textBoxUserName.Text;
+            PassWord = textBoxPassword.Text;
+            IsOwner = checkBoxIsOwner.Checked;
+
+            if ((Name != "" &&
+                UserName != "" &&
+                PassWord != "") &&
+                PassWord == textBoxConfirmPassword.Text) buttonCreate.Enabled = true;
 
             else buttonCreate.Enabled = false;
         }
