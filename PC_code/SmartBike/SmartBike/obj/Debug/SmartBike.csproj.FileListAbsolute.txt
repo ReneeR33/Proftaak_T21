@@ -41,7 +41,6 @@ C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Deb
 C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\GMap.NET.Core.dll
 C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\GMap.NET.WindowsForms.dll
-C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\GMap.NET.WindowsPresentation.dll
 C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\Newtonsoft.Json.dll
 C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\System.Data.SQLite.dll
 C:\Users\faasb\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\System.Data.SQLite.EF6.dll

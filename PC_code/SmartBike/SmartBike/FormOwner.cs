@@ -26,7 +26,7 @@ namespace SmartBike
             InitializeComponent();
             listBoxUsers.DataSource = lockMyBike.Users;
             label1.Text = lockMyBike.UserLoggedIn.Name;
-
+            setLocation();
         }
         
         void FormOwner_FormClosed(object sender, FormClosedEventArgs e)
@@ -130,7 +130,7 @@ namespace SmartBike
             GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_dot);
             GMapOverlay markers = new GMapOverlay("markers");
             markers.Markers.Add(marker);
-            Map.Overlays.Add(markers);
+            Map.Overlays.Add(markers);            
         }
     }
 }
