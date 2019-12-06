@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 
 namespace SmartBike
 {
@@ -110,6 +114,23 @@ namespace SmartBike
         {
             FormAddFingerprint  formAddFingerprint = new FormAddFingerprint();
             formAddFingerprint.Show();
+        }
+        private void setLocation()
+        {
+            double lat = 51.452749;
+            double lng = 5.482001;
+
+            var point = new PointLatLng(lat, lng);
+            Map.DragButton = MouseButtons.Left;
+            Map.MapProvider = GMapProviders.GoogleMap;
+            Map.Position = point;
+            Map.MinZoom = 5;
+            Map.MaxZoom = 20;
+            Map.Zoom = 15;
+            GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_dot);
+            GMapOverlay markers = new GMapOverlay("markers");
+            markers.Markers.Add(marker);
+            Map.Overlays.Add(markers);
         }
     }
 }
