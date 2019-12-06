@@ -56,16 +56,7 @@ namespace SmartBike
 
         private void ButtonLock_Click(object sender, EventArgs e)
         {
-            if(buttonLock.Text == "open lock")
-            {
-                lockMyBike.OpenLock();
-                buttonLock.Text = "close lock";
-            }
-            else
-            {
-                lockMyBike.CloseLock();
-                buttonLock.Text = "open lock";
-            }
+            lockMyBike.OpenLock();
         }
         private void ButtonAddUser_Click(object sender, EventArgs e)
         {
@@ -83,11 +74,19 @@ namespace SmartBike
 
         private void ButtonRemoveUser_Click(object sender, EventArgs e)
         {
-            if(listBoxUsers.SelectedIndex != -1)
+            if(listBoxUsers.SelectedIndex > -1)
             {
-                lockMyBike.RemoveUser(lockMyBike.Users[listBoxUsers.SelectedIndex]);
-                listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
-                MessageBox.Show("Deleted");
+                User selectedUser = lockMyBike.Users[listBoxUsers.SelectedIndex];
+                if(selectedUser.ID == lockMyBike.UserLoggedIn.ID)
+                {
+                    MessageBox.Show("You cannot delete your own account");
+                }
+                else
+                {
+                    lockMyBike.RemoveUser(selectedUser);
+                    listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
+                    MessageBox.Show("Deleted");
+                }
             }
         }
 

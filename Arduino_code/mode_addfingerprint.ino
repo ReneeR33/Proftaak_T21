@@ -8,7 +8,7 @@ void addFingerprintK() {
   
   if (customKey && fingerPrintScanProgress < 3) {
     //fingerPrintScan = finger.image2Tz(fingerPrintScanProgress);
-
+    
     fingerPrintScanProgress++;
     Serial.println("OK");
     Serial.println(fingerPrintScanProgress);

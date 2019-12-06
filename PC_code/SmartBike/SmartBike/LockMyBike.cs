@@ -19,20 +19,17 @@ namespace SmartBike
             NotAddingFingerprint
         };
 
-        public AddingFingerprintStatus addingFingerprintStatus;
         private Serial serial;
 
         private Database database;
         public User UserLoggedIn { get; private set; }
         public List<User> Users { get; private set; }
-
-      
+        public int LastAddedFingerprintID { get; private set; }
         public LockMyBike()
         {
             serial = new Serial("COM5", 9600, new MessageBuilder('#', '%'));
             database = new Database();
             Users = database.GetUsers();
-            addingFingerprintStatus = AddingFingerprintStatus.NotAddingFingerprint;
         }
         public bool Login(string userName, string password)
         {
@@ -50,10 +47,30 @@ namespace SmartBike
             }
             return false;
         }
-        //public AddingFingerprintStatus GetFingerprintStatus()
-        //{
-        //    //
-        //}
+        public AddingFingerprintStatus GetAddingFingerprintStatus()
+        {
+            AddingFingerprintStatus status = AddingFingerprintStatus.NotAddingFingerprint;
+            string[] messages = serial.ReadMessages();
+            if(messages != null)
+            {
+                if(messages != null && messages.Length > 0)
+                {
+                    foreach (string message in messages)
+                    {
+                        if (message == "FIRST_SCANNED") status = AddingFingerprintStatus.FirstScanned;
+                        else if (message == "SECOND_SCANNED") status = AddingFingerprintStatus.SecondScanned;
+                        else if (message.StartsWith("ADDED_FINGERPRINT:"))
+                        {
+                            status = AddingFingerprintStatus.Created;
+                            message.Replace("ADDED_FINGERPRINT:", "");
+                            int lastAdded;
+                            if (Int32.TryParse(message, out lastAdded)) LastAddedFingerprintID = lastAdded;
+                        }
+                    }
+                }
+            }
+            return status;
+        }
 
         public void AddUser(User user)
         {
@@ -65,19 +82,38 @@ namespace SmartBike
         {
             if(user != null)
             {
-                serial.Connect();
-                serial.SendMessage("REMOVE_FINGERPRINT:" + user.FingerID.ToString());
-                Thread.Sleep(200);
-                string[] messages = serial.ReadMessages();
-                foreach (string message in messages)
+                bool deleted = false;
+                if (user.FingerID != -1)
                 {
-                    System.Windows.Forms.MessageBox.Show(message);
+                    serial.Connect();
+                    serial.SendMessage("REMOVE_FINGERPRINT:" + user.FingerID.ToString());
+                    Thread.Sleep(600);
+                    string[] messages = serial.ReadMessages();
+                    if(messages != null)
+                    {
+                        foreach (string message in messages)
+                        {
+                            if (message == "DELETION_SUCCESS")
+                            {
+                                deleted = true;
+                            }
+                        }
+                    }
+                    
+                    serial.Disconnect();
                 }
-                serial.Disconnect();
-                database.RemoveUser(user);
-                Users = database.GetUsers();
+                else deleted = true;
+
+                if (deleted)
+                {
+                    database.RemoveUser(user);
+                    Users = database.GetUsers();
+                    //System.Windows.Forms.MessageBox.Show("Deletion success");
+                }
+                
             }
         }
+
 
         public void OpenLock()
         {

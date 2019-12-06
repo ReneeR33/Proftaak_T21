@@ -39,6 +39,7 @@ int ReadFingerprintK(){
   char customKey = customKeypad.getKey();
   
   if (customKey) {
+    //Serial.println((int)customKey);
     int key = (int)customKey - 48;
     byte value;
     
@@ -68,3 +69,18 @@ int ReadFingerprintK(){
   }
   return false;
 }*/
+
+bool RemoveFingerprintK(int id){
+  if(id > 0 && id < 11){
+    byte value = 0;
+    //finger.deleteModel(id);
+    EEPROM.put(id, value);
+
+    Serial.print("Deleted fingeprint with id = ");
+    Serial.println(id);
+    Serial.println("#DELETION_SUCCESS%");
+    
+    return true;
+  }
+  return false;
+}

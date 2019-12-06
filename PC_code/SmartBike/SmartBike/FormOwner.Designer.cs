@@ -51,9 +51,9 @@
             // 
             // groupBoxData
             // 
-            this.groupBoxData.Location = new System.Drawing.Point(25, 50);
+            this.groupBoxData.Location = new System.Drawing.Point(31, 41);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(263, 220);
+            this.groupBoxData.Size = new System.Drawing.Size(422, 293);
             this.groupBoxData.TabIndex = 1;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "data bike";
@@ -64,7 +64,7 @@
             this.groupBox1.Controls.Add(this.buttonRemoveUser);
             this.groupBox1.Controls.Add(this.buttonAddUser);
             this.groupBox1.Controls.Add(this.listBoxUsers);
-            this.groupBox1.Location = new System.Drawing.Point(307, 12);
+            this.groupBox1.Location = new System.Drawing.Point(471, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(417, 367);
             this.groupBox1.TabIndex = 2;
@@ -103,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 21);
+            this.label1.Location = new System.Drawing.Point(28, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 3;
@@ -111,7 +111,7 @@
             // 
             // buttonLock
             // 
-            this.buttonLock.Location = new System.Drawing.Point(78, 283);
+            this.buttonLock.Location = new System.Drawing.Point(30, 354);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(109, 25);
             this.buttonLock.TabIndex = 6;
@@ -121,7 +121,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(90, 16);
+            this.button2.Location = new System.Drawing.Point(96, 7);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(79, 22);
             this.button2.TabIndex = 4;
@@ -130,7 +130,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(107, 337);
+            this.button1.Location = new System.Drawing.Point(157, 354);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 25);
             this.button1.TabIndex = 7;
@@ -141,7 +141,7 @@
             // labelLocked
             // 
             this.labelLocked.AutoSize = true;
-            this.labelLocked.Location = new System.Drawing.Point(22, 257);
+            this.labelLocked.Location = new System.Drawing.Point(28, 248);
             this.labelLocked.Name = "labelLocked";
             this.labelLocked.Size = new System.Drawing.Size(10, 13);
             this.labelLocked.TabIndex = 8;
@@ -150,7 +150,7 @@
             // labelConnected
             // 
             this.labelConnected.AutoSize = true;
-            this.labelConnected.Location = new System.Drawing.Point(192, 21);
+            this.labelConnected.Location = new System.Drawing.Point(198, 12);
             this.labelConnected.Name = "labelConnected";
             this.labelConnected.Size = new System.Drawing.Size(58, 13);
             this.labelConnected.TabIndex = 9;
@@ -171,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 395);
+            this.ClientSize = new System.Drawing.Size(912, 401);
             this.Controls.Add(this.labelConnected);
             this.Controls.Add(this.labelLocked);
             this.Controls.Add(this.button1);

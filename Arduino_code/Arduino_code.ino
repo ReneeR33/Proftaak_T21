@@ -11,7 +11,6 @@
 #include <Adafruit_Fingerprint.h>
 
 #define ledPin 10
-#define ledPin2 13
 #define buttonPin 12
 #define servoPin 11
 
@@ -67,7 +66,6 @@ void setup() {
   servo.write(90);
   pinMode(buttonPin, INPUT);
   pinMode(ledPin, OUTPUT);
-  pinMode(ledPin2, OUTPUT);
   StartFingerprintscanner();
 
   Serial.begin(9600);  // test
@@ -77,7 +75,9 @@ void loop() {
   buttonPinValue = digitalRead(buttonPin);
   Message = CheckMessage();
 
-  fingerID = ReadFingerprintK();
+  if(state != ADD_FINGERPRINT) {
+    fingerID = ReadFingerprintK();
+  }
   /*if (millis() > endTime && state == OPEN_LOCK) {
 
     fingerID = ReadFingerprint();
@@ -116,13 +116,17 @@ void loop() {
       }
       else if (Message == "STATE:ADD_FINGERPRINT") {
         state = ADD_FINGERPRINT;
+        Serial.println("switched");
       }
       else if (Message.startsWith("REMOVE_FINGERPRINT:")) {
         Message.remove(0, 19);
         int id = Message.toInt();
         if (id > 0) {
-          //RemoveFingerprint(id);
+          RemoveFingerprintK(id);
         }
+      }
+      else if (Message == "OPEN_LOCK" || Message == "CLOSE_LOCK"){
+        OpenLock();
       }
       else if (Message == "HALLO") {
         Serial.print("#HALLO_APP%");
