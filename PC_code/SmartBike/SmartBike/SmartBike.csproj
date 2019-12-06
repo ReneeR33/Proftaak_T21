@@ -82,11 +82,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
-    <Compile Include="FormLocation.cs">
+    <Compile Include="FormAddFingerprint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLocation.Designer.cs">
-      <DependentUpon>FormLocation.cs</DependentUpon>
+    <Compile Include="FormAddFingerprint.Designer.cs">
+      <DependentUpon>FormAddFingerprint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddUser.Designer.cs">
+      <DependentUpon>FormAddUser.cs</DependentUpon>
     </Compile>
     <Compile Include="FormOwner.cs">
       <SubType>Form</SubType>
@@ -112,8 +118,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serial.cs" />
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="FormLocation.resx">
-      <DependentUpon>FormLocation.cs</DependentUpon>
+    <EmbeddedResource Include="FormAddFingerprint.resx">
+      <DependentUpon>FormAddFingerprint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddUser.resx">
+      <DependentUpon>FormAddUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOwner.resx">
       <DependentUpon>FormOwner.cs</DependentUpon>

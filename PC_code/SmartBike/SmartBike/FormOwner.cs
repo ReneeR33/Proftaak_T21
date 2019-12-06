@@ -56,26 +56,60 @@ namespace SmartBike
 
         private void ButtonLock_Click(object sender, EventArgs e)
         {
-            if(buttonLock.Text == "open lock")
+            lockMyBike.OpenLock();
+        }
+        private void ButtonAddUser_Click(object sender, EventArgs e)
+        {
+            FormAddUser formAddUser = new FormAddUser();
+            DialogResult result = formAddUser.ShowDialog();
+
+            if(result == DialogResult.OK)
             {
-                lockMyBike.OpenLock();
-                buttonLock.Text = "close lock";
-            }
-            else
-            {
-                lockMyBike.CloseLock();
-                buttonLock.Text = "open lock";
+                User user = new User(formAddUser.Name, formAddUser.UserName, formAddUser.PassWord, -1, formAddUser.IsOwner);
+                lockMyBike.AddUser(user);
+                listBoxUsers.DataSource = null;
+                listBoxUsers.DataSource = lockMyBike.Users; 
             }
         }
 
         private void ButtonRemoveUser_Click(object sender, EventArgs e)
         {
-            if(listBoxUsers.SelectedIndex != -1)
+            if(listBoxUsers.SelectedIndex > -1)
             {
-                lockMyBike.RemoveUser(lockMyBike.Users[listBoxUsers.SelectedIndex]);
-                listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
-                MessageBox.Show("Deleted");
+                User selectedUser = lockMyBike.Users[listBoxUsers.SelectedIndex];
+                if(selectedUser.ID == lockMyBike.UserLoggedIn.ID)
+                {
+                    MessageBox.Show("You cannot delete your own account");
+                }
+                else
+                {
+                    lockMyBike.RemoveUser(selectedUser);
+                    listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
+                    MessageBox.Show("Deleted");
+                }
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            lockMyBike.Test();
+        }
+
+        private void ListBoxUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxUsers.SelectedIndex > -1)
+            {
+                User selectedUser = lockMyBike.Users[listBoxUsers.SelectedIndex];
+                if (selectedUser.FingerID == -1) buttonAddFingerprint.Enabled = true;
+                else buttonAddFingerprint.Enabled = false;
+            }
+            else buttonAddFingerprint.Enabled = false;
+        }
+
+        private void ButtonAddFingerprint_Click(object sender, EventArgs e)
+        {
+            FormAddFingerprint  formAddFingerprint = new FormAddFingerprint();
+            formAddFingerprint.Show();
         }
     }
 }

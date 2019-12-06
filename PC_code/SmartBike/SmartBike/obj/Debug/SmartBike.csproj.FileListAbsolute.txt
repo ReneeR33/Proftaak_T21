@@ -36,3 +36,5 @@ C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\De
 C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.csproj.CopyComplete
 C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.FormOwner.resources
 C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.FormUser.resources
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.FormAddUser.resources
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.FormAddFingerprint.resources

@@ -4,21 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Threading;
 
 namespace SmartBike
 {
     //Dit is de hoofdklasse voor ons programma
     public class LockMyBike
     {
+        public enum AddingFingerprintStatus
+        {
+            FirstScanned,
+            SecondScanned,
+            Created,
+            NotAddingFingerprint
+        };
+
         private Serial serial;
 
         private Database database;
         public User UserLoggedIn { get; private set; }
         public List<User> Users { get; private set; }
-
+        public int LastAddedFingerprintID { get; private set; }
         public LockMyBike()
         {
-            serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
+            serial = new Serial("COM5", 9600, new MessageBuilder('#', '%'));
             database = new Database();
             Users = database.GetUsers();
         }
@@ -36,26 +45,75 @@ namespace SmartBike
                 }
 
             }
-            
             return false;
+        }
+        public AddingFingerprintStatus GetAddingFingerprintStatus()
+        {
+            AddingFingerprintStatus status = AddingFingerprintStatus.NotAddingFingerprint;
+            string[] messages = serial.ReadMessages();
+            if(messages != null)
+            {
+                if(messages != null && messages.Length > 0)
+                {
+                    foreach (string message in messages)
+                    {
+                        if (message == "FIRST_SCANNED") status = AddingFingerprintStatus.FirstScanned;
+                        else if (message == "SECOND_SCANNED") status = AddingFingerprintStatus.SecondScanned;
+                        else if (message.StartsWith("ADDED_FINGERPRINT:"))
+                        {
+                            status = AddingFingerprintStatus.Created;
+                            message.Replace("ADDED_FINGERPRINT:", "");
+                            int lastAdded;
+                            if (Int32.TryParse(message, out lastAdded)) LastAddedFingerprintID = lastAdded;
+                        }
+                    }
+                }
+            }
+            return status;
         }
 
         public void AddUser(User user)
         {
-
+            database.addUser(user);
+            Users = database.GetUsers();
         }
         
         public void RemoveUser(User user)
         {
             if(user != null)
             {
-                serial.Connect();
-                serial.SendMessage("REMOVE_FINGERPRINT:" + user.FingerID.ToString());
-                serial.Disconnect();
-                database.RemoveUser(user);
-                Users = database.GetUsers();
+                bool deleted = false;
+                if (user.FingerID != -1)
+                {
+                    serial.Connect();
+                    serial.SendMessage("REMOVE_FINGERPRINT:" + user.FingerID.ToString());
+                    Thread.Sleep(600);
+                    string[] messages = serial.ReadMessages();
+                    if(messages != null)
+                    {
+                        foreach (string message in messages)
+                        {
+                            if (message == "DELETION_SUCCESS")
+                            {
+                                deleted = true;
+                            }
+                        }
+                    }
+                    
+                    serial.Disconnect();
+                }
+                else deleted = true;
+
+                if (deleted)
+                {
+                    database.RemoveUser(user);
+                    Users = database.GetUsers();
+                    //System.Windows.Forms.MessageBox.Show("Deletion success");
+                }
+                
             }
         }
+
 
         public void OpenLock()
         {
@@ -71,28 +129,18 @@ namespace SmartBike
             serial.Disconnect();
         }
 
-        //nodig?
-        //public void UseIncomingMessages()
-        //{
-        //    string[] messages = serial.ReadMessages();
-        //    if (messages != null && messages.Length != 0)
-        //    {
-        //        foreach (string message in messages)
-        //        {
-        //            if (message == "")
-        //            {
-        //                //
-        //            }
-        //            else if (message == "")
-        //            {
+        public void Test()
+        {
+            serial.Connect();
+            serial.SendMessage("HALLO");
+            Thread.Sleep(500);
+            string[] messages = serial.ReadMessages();
+            foreach (string message in messages)
+            {
+                System.Windows.Forms.MessageBox.Show(message);
+            }
+            serial.Disconnect();
+        }
 
-        //            }
-        //            else if (message == "")
-        //            {
-        //                //
-        //            }
-        //        }
-        //    }
-        //}
     }
 }
