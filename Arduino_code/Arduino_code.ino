@@ -85,7 +85,7 @@ void loop() {
   }
   */
   
-  Lock();
+  //Lock();
   if (Message != "") {
     Serial.println(Message);
   }
@@ -106,6 +106,8 @@ void loop() {
     case BUTTON_PRESSED:
       switch (state) {
         case OPEN_LOCK:
+          Serial.print("#BUTTON%");
+          delay(200);
           CloseLock();
           break;
       }

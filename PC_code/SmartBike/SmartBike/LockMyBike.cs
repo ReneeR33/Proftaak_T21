@@ -19,7 +19,7 @@ namespace SmartBike
             NotAddingFingerprint
         };
 
-        private Serial serial;
+        public Serial serial { get; private set; }
 
         private Database database;
         public User UserLoggedIn { get; private set; }
@@ -27,7 +27,7 @@ namespace SmartBike
         public int LastAddedFingerprintID { get; private set; }
         public LockMyBike()
         {
-            serial = new Serial("COM5", 9600, new MessageBuilder('#', '%'));
+            serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
             database = new Database();
             Users = database.GetUsers();
         }

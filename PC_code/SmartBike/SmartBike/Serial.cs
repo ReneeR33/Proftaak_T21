@@ -22,7 +22,7 @@ namespace SmartBike
         /// <summary>
         /// Serial port used for the connection.
         /// </summary>
-        private SerialPort serialPort;
+        public SerialPort serialPort { get; private set; }
 
         private MessageBuilder messageBuilder;
 

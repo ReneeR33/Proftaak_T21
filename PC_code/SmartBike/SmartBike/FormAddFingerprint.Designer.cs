@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.checkBoxFirst = new System.Windows.Forms.CheckBox();
             this.checkBoxSecond = new System.Windows.Forms.CheckBox();
             this.checkBoxAdded = new System.Windows.Forms.CheckBox();
             this.button = new System.Windows.Forms.Button();
             this.labelStatus = new System.Windows.Forms.Label();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // checkBoxFirst
@@ -72,7 +70,8 @@
             // 
             // button
             // 
-            this.button.Location = new System.Drawing.Point(111, 113);
+            this.button.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button.Location = new System.Drawing.Point(112, 113);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(80, 25);
             this.button.TabIndex = 3;
@@ -87,10 +86,6 @@
             this.labelStatus.Size = new System.Drawing.Size(84, 13);
             this.labelStatus.TabIndex = 4;
             this.labelStatus.Text = "Scan your finger";
-            // 
-            // timer
-            // 
-            this.timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // FormAddFingerprint
             // 
@@ -111,11 +106,10 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkBoxFirst;
-        private System.Windows.Forms.CheckBox checkBoxSecond;
-        private System.Windows.Forms.CheckBox checkBoxAdded;
+        public System.Windows.Forms.CheckBox checkBoxFirst;
+        public System.Windows.Forms.CheckBox checkBoxSecond;
+        public System.Windows.Forms.CheckBox checkBoxAdded;
         private System.Windows.Forms.Button button;
         private System.Windows.Forms.Label labelStatus;
-        private System.Windows.Forms.Timer timer;
     }
 }

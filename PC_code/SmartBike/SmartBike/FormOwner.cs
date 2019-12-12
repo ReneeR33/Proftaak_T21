@@ -108,8 +108,9 @@ namespace SmartBike
 
         private void ButtonAddFingerprint_Click(object sender, EventArgs e)
         {
-            FormAddFingerprint  formAddFingerprint = new FormAddFingerprint();
-            formAddFingerprint.Show();
+            FormAddFingerprint  formAddFingerprint = new FormAddFingerprint(lockMyBike);
+            DialogResult result = formAddFingerprint.ShowDialog();
+            
         }
     }
 }

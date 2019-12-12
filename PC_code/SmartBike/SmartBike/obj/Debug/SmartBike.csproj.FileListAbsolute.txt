@@ -38,3 +38,17 @@ C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\De
 C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.FormUser.resources
 C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.FormAddUser.resources
 C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\obj\Debug\SmartBike.FormAddFingerprint.resources
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\EntityFramework.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\GMap.NET.Core.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\GMap.NET.WindowsPresentation.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\System.Data.SQLite.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\EntityFramework.xml
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\System.Data.SQLite.xml
+C:\Users\Renée\Documents\GitHub\Proftaak_T21\PC_code\SmartBike\SmartBike\bin\Debug\System.Data.SQLite.dll.config

@@ -20,6 +20,6 @@ void CloseLock(){
 
 void Lock(){
   if (millis() > endTimeServo) {
-    servo.write(90);
+    //servo.write(90);
   }
 }
