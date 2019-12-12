@@ -71,6 +71,7 @@
             // button
             // 
             this.button.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button.Enabled = false;
             this.button.Location = new System.Drawing.Point(112, 113);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(80, 25);
@@ -106,10 +107,10 @@
 
         #endregion
 
-        public System.Windows.Forms.CheckBox checkBoxFirst;
-        public System.Windows.Forms.CheckBox checkBoxSecond;
-        public System.Windows.Forms.CheckBox checkBoxAdded;
-        private System.Windows.Forms.Button button;
+        private System.Windows.Forms.CheckBox checkBoxFirst;
+        private System.Windows.Forms.CheckBox checkBoxSecond;
+        private System.Windows.Forms.CheckBox checkBoxAdded;
         private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.Button button;
     }
 }

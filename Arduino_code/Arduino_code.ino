@@ -106,7 +106,7 @@ void loop() {
     case BUTTON_PRESSED:
       switch (state) {
         case OPEN_LOCK:
-          Serial.print("#BUTTON%");
+          Serial.print("#ADDED_FINGERPRINT:5%");
           delay(200);
           CloseLock();
           break;
@@ -119,6 +119,7 @@ void loop() {
       else if (Message == "STATE:ADD_FINGERPRINT") {
         state = ADD_FINGERPRINT;
         Serial.println("switched");
+        Serial.print("#ADD_FINGERPRINT%");
       }
       else if (Message.startsWith("REMOVE_FINGERPRINT:")) {
         Message.remove(0, 19);

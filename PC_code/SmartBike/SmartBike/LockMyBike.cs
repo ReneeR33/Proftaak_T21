@@ -21,15 +21,16 @@ namespace SmartBike
 
         public Serial serial { get; private set; }
 
-        private Database database;
+        public Database database { get; private set; }
         public User UserLoggedIn { get; private set; }
         public List<User> Users { get; private set; }
-        public int LastAddedFingerprintID { get; private set; }
+        public int LastAddedFingerprintID;
         public LockMyBike()
         {
             serial = new Serial("COM3", 9600, new MessageBuilder('#', '%'));
             database = new Database();
             Users = database.GetUsers();
+            LastAddedFingerprintID = 0;
         }
         public bool Login(string userName, string password)
         {
@@ -61,10 +62,16 @@ namespace SmartBike
                         else if (message == "SECOND_SCANNED") status = AddingFingerprintStatus.SecondScanned;
                         else if (message.StartsWith("ADDED_FINGERPRINT:"))
                         {
+                            System.Windows.Forms.MessageBox.Show(message);
                             status = AddingFingerprintStatus.Created;
-                            message.Replace("ADDED_FINGERPRINT:", "");
+                            string lastAddedString = "";
+                            lastAddedString = message.Replace("ADDED_FINGERPRINT:", "");
                             int lastAdded;
-                            if (Int32.TryParse(message, out lastAdded)) LastAddedFingerprintID = lastAdded;
+                            if (Int32.TryParse(lastAddedString, out lastAdded)) LastAddedFingerprintID = lastAdded;
+                            else LastAddedFingerprintID = 0;
+
+                            serial.SendMessage("STATE:OPEN_LOCK");
+
                         }
                     }
                 }
@@ -74,7 +81,13 @@ namespace SmartBike
 
         public void AddUser(User user)
         {
-            database.addUser(user);
+            database.AddUser(user);
+            Users = database.GetUsers();
+        }
+
+        public void UpdateFingerprint(User user, int fingerID)
+        {
+            database.UpdateFingerprint(user, fingerID);
             Users = database.GetUsers();
         }
         
@@ -108,7 +121,7 @@ namespace SmartBike
                 {
                     database.RemoveUser(user);
                     Users = database.GetUsers();
-                    //System.Windows.Forms.MessageBox.Show("Deletion success");
+                    System.Windows.Forms.MessageBox.Show("deleted");
                 }
                 
             }

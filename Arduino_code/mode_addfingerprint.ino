@@ -11,6 +11,8 @@ void addFingerprintK() {
     
     fingerPrintScanProgress++;
     Serial.println("OK");
+    if(fingerPrintScanProgress == 2) Serial.print("#FIRST_SCANNED%");
+    else if (fingerPrintScanProgress == 3) Serial.print("#SECOND_SCANNED%");
     Serial.println(fingerPrintScanProgress);
     delay(500);
   }
@@ -26,6 +28,9 @@ void addFingerprintK() {
       EEPROM.put(id, 1);
       Serial.print("Stored, id value = ");
       Serial.println(id);
+      Serial.print("#ADDED_FINGERPRINT:");
+      Serial.print(id);
+      Serial.print("%");
     }
     fingerPrintScanProgress = 1;
   }

@@ -89,7 +89,6 @@ namespace SmartBike
                 {
                     lockMyBike.RemoveUser(selectedUser);
                     listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
-                    MessageBox.Show("Deleted");
                 }
             }
         }
@@ -112,8 +111,17 @@ namespace SmartBike
 
         private void ButtonAddFingerprint_Click(object sender, EventArgs e)
         {
+            User selectedUser = lockMyBike.Users[listBoxUsers.SelectedIndex];
+
             FormAddFingerprint  formAddFingerprint = new FormAddFingerprint(lockMyBike);
             DialogResult result = formAddFingerprint.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                MessageBox.Show(lockMyBike.LastAddedFingerprintID.ToString());
+                lockMyBike.UpdateFingerprint(selectedUser, lockMyBike.LastAddedFingerprintID);
+                listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
+            }
             
         }
         private void setLocation()

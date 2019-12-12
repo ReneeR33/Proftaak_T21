@@ -11,7 +11,7 @@ namespace SmartBike
 
     ///Om verbinding te maken met deze database moet je eerst de MySql.Data plugin downloaden,
     ///en verbinding maken met vdi.fhict.nl (VPN)
-    class Database
+    public class Database
     {
         private MySqlConnection connection;
         private string server;
@@ -103,7 +103,7 @@ namespace SmartBike
             cmd.ExecuteScalar();
             this.Disconnect();
         }
-        public void addUser(User user)
+        public void AddUser(User user)
         {
             string query = "INSERT INTO `user` (`name`, `username`, `password`, `finger_id`, `is_owner`) " +
                 "VALUES (@param_name, @param_username, @param_password, '-1', @param_is_owner);";
@@ -112,6 +112,17 @@ namespace SmartBike
             cmd.Parameters.AddWithValue("@param_username", user.UserName);
             cmd.Parameters.AddWithValue("@param_password", user.Password);
             cmd.Parameters.AddWithValue("@param_is_owner", user.IsOwner);
+            this.Connect();
+            cmd.ExecuteScalar();
+            this.Disconnect();
+        }
+
+        public void UpdateFingerprint(User user, int fingerID)
+        {
+            string query = "UPDATE `user` SET `finger_id` = @finger_id WHERE `user`.`id` = @user_id;";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@user_id", user.ID);
+            cmd.Parameters.AddWithValue("@finger_id", fingerID);
             this.Connect();
             cmd.ExecuteScalar();
             this.Disconnect();
