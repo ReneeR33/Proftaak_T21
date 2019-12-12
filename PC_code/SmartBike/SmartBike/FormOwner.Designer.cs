@@ -32,6 +32,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonAddFingerprint = new System.Windows.Forms.Button();
             this.buttonRemoveUser = new System.Windows.Forms.Button();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.listBoxUsers = new System.Windows.Forms.ListBox();
@@ -41,7 +42,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.labelLocked = new System.Windows.Forms.Label();
             this.labelConnected = new System.Windows.Forms.Label();
-            this.buttonAddFingerprint = new System.Windows.Forms.Button();
+            this.Map = new GMap.NET.WindowsForms.GMapControl();
+            this.groupBoxData.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +53,7 @@
             // 
             // groupBoxData
             // 
+            this.groupBoxData.Controls.Add(this.Map);
             this.groupBoxData.Location = new System.Drawing.Point(31, 41);
             this.groupBoxData.Name = "groupBoxData";
             this.groupBoxData.Size = new System.Drawing.Size(422, 293);
@@ -70,6 +73,17 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "users";
+            // 
+            // buttonAddFingerprint
+            // 
+            this.buttonAddFingerprint.Enabled = false;
+            this.buttonAddFingerprint.Location = new System.Drawing.Point(295, 327);
+            this.buttonAddFingerprint.Name = "buttonAddFingerprint";
+            this.buttonAddFingerprint.Size = new System.Drawing.Size(91, 23);
+            this.buttonAddFingerprint.TabIndex = 3;
+            this.buttonAddFingerprint.Text = "add fingerprint";
+            this.buttonAddFingerprint.UseVisualStyleBackColor = true;
+            this.buttonAddFingerprint.Click += new System.EventHandler(this.ButtonAddFingerprint_Click);
             // 
             // buttonRemoveUser
             // 
@@ -156,16 +170,31 @@
             this.labelConnected.TabIndex = 9;
             this.labelConnected.Text = "connected";
             // 
-            // buttonAddFingerprint
+            // Map
             // 
-            this.buttonAddFingerprint.Enabled = false;
-            this.buttonAddFingerprint.Location = new System.Drawing.Point(295, 327);
-            this.buttonAddFingerprint.Name = "buttonAddFingerprint";
-            this.buttonAddFingerprint.Size = new System.Drawing.Size(91, 23);
-            this.buttonAddFingerprint.TabIndex = 3;
-            this.buttonAddFingerprint.Text = "add fingerprint";
-            this.buttonAddFingerprint.UseVisualStyleBackColor = true;
-            this.buttonAddFingerprint.Click += new System.EventHandler(this.ButtonAddFingerprint_Click);
+            this.Map.Bearing = 0F;
+            this.Map.CanDragMap = true;
+            this.Map.EmptyTileColor = System.Drawing.Color.Navy;
+            this.Map.GrayScaleMode = false;
+            this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.Map.LevelsKeepInMemmory = 5;
+            this.Map.Location = new System.Drawing.Point(15, 19);
+            this.Map.MarkersEnabled = true;
+            this.Map.MaxZoom = 2;
+            this.Map.MinZoom = 2;
+            this.Map.MouseWheelZoomEnabled = true;
+            this.Map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.Map.Name = "Map";
+            this.Map.NegativeMode = false;
+            this.Map.PolygonsEnabled = true;
+            this.Map.RetryLoadTile = 0;
+            this.Map.RoutesEnabled = true;
+            this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.Map.ShowTileGridLines = false;
+            this.Map.Size = new System.Drawing.Size(401, 268);
+            this.Map.TabIndex = 0;
+            this.Map.Zoom = 0D;
             // 
             // FormOwner
             // 
@@ -182,6 +211,7 @@
             this.Controls.Add(this.groupBoxData);
             this.Name = "FormOwner";
             this.Text = "Form1";
+            this.groupBoxData.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,6 +232,7 @@
         private System.Windows.Forms.Label labelLocked;
         private System.Windows.Forms.Label labelConnected;
         private System.Windows.Forms.Button buttonAddFingerprint;
+        private GMap.NET.WindowsForms.GMapControl Map;
     }
 }
 
