@@ -17,6 +17,7 @@ namespace SmartBike
 {
     public partial class FormOwner : Form
     {
+        private bool exitProgramWhenClosed = true;
         private LockMyBike lockMyBike;
 
         public FormOwner(LockMyBike LMB)
@@ -31,7 +32,10 @@ namespace SmartBike
         
         void FormOwner_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (exitProgramWhenClosed)
+            {
+                Application.Exit();
+            }
         }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -49,13 +53,6 @@ namespace SmartBike
         private void Timer1_Tick(object sender, EventArgs e)
         {
             //niet nodig
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            //Database database = new Database();
-            //users = database.GetUsers();
-            //listBox1.DataSource = users;
         }
 
         private void ButtonLock_Click(object sender, EventArgs e)
@@ -140,6 +137,15 @@ namespace SmartBike
             GMapOverlay markers = new GMapOverlay("markers");
             markers.Markers.Add(marker);
             Map.Overlays.Add(markers);            
+        }
+
+        private void ButtonLogout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("logged out owner");
+            FormLogin login = new FormLogin(lockMyBike);
+            login.Show();
+            exitProgramWhenClosed = false;
+            this.Close();
         }
     }
 }

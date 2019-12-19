@@ -13,10 +13,24 @@ namespace SmartBike
     public partial class FormLogin : Form
     {
         LockMyBike lockMyBike;
+        
         public FormLogin()
         {
             lockMyBike = new LockMyBike();
             InitializeComponent();
+            this.FormClosed += new FormClosedEventHandler(FormLogin_FormClosed);
+        }
+        public FormLogin(LockMyBike LMB)
+        {
+            lockMyBike = LMB;
+            InitializeComponent();
+            this.FormClosed += new FormClosedEventHandler(FormLogin_FormClosed);
+
+        }
+
+        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void ButtonLogin_Click(object sender, EventArgs e)
