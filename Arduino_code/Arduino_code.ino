@@ -30,6 +30,12 @@ byte colPins[COLS] = {5, 4, 3, 2};
 Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
 //////////////////////////////////////////////////////////////////////////////
 
+enum Accessibility {
+  NO_ACCESS,
+  ACCESS,
+  NOT_SPECIFIED,
+};
+
 enum State {
   OPEN_LOCK,
   ADD_FINGERPRINT,
@@ -133,6 +139,22 @@ void loop() {
       }
       else if (Message == "HALLO") {
         Serial.print("#HALLO_APP%");
+      }
+      else if(Message.startsWith("GIVE_ACCESS:")){
+        Message.remove(0, 12);
+        int id = Message.toInt();
+
+        if(ChangeAccess(ACCESS, id)){
+          Serial.println("#SUCCESS%");
+        }
+      }
+      else if(Message.startsWith("REMOVE_ACCESS:")){
+        Message.remove(0, 14);
+        int id = Message.toInt();
+        
+        if(ChangeAccess(NO_ACCESS, id)){
+          Serial.println("#SUCCESS%");
+        }
       }
       else if (Message == "GET_LOCKSTATE"){
         Serial.print("#LOCKSTATE:");

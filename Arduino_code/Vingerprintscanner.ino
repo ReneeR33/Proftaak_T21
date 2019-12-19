@@ -46,7 +46,7 @@ int ReadFingerprintK(){
     for (int i = 1; i < 11; i++) {
       EEPROM.get(i, value);
       
-      if(value == 1 && key == i) {
+      if(value == 2 && key == i) {
         Serial.println(i);
         return i;
       }
@@ -69,6 +69,26 @@ int ReadFingerprintK(){
   }
   return false;
 }*/
+
+bool ChangeAccess(Accessibility access, int id){
+  if(id > 0 && id < 11 && access != NOT_SPECIFIED){
+    byte value;
+    EEPROM.get(id, value);
+    Serial.println(value);
+    if(value != 0){
+      if(access == ACCESS) value = 2;
+    else value = 1;
+    //finger.deleteModel(id);
+    EEPROM.put(id, value);
+
+    Serial.print("Changed access for id=");
+    Serial.println(id);
+    
+    return true;
+    }
+  }
+  return false;
+}
 
 bool RemoveFingerprintK(int id){
   if(id > 0 && id < 11){

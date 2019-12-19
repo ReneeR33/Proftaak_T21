@@ -147,5 +147,19 @@ namespace SmartBike
             exitProgramWhenClosed = false;
             this.Close();
         }
+
+        private void ButtonChangeData_Click(object sender, EventArgs e)
+        {
+            User selectedUser = lockMyBike.Users[listBoxUsers.SelectedIndex];
+            FormAddUser formAddUser = new FormAddUser(selectedUser);
+            DialogResult result = formAddUser.ShowDialog();
+            
+            if(result == DialogResult.OK)
+            {
+                lockMyBike.UpdateUser(selectedUser, formAddUser.Name, formAddUser.UserName, formAddUser.PassWord, formAddUser.IsOwner);
+                listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
+            }
+            
+        }
     }
 }

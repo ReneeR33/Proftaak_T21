@@ -20,11 +20,22 @@ namespace SmartBike
         {
             InitializeComponent();
         }
+        public FormAddUser(User user)
+        {
+            InitializeComponent();
+            textBoxName.Text = user.Name;
+            textBoxUserName.Text = user.UserName;
+            textBoxPassword.Text = user.Password;
+            textBoxConfirmPassword.Text = user.Password;
+            checkBoxIsOwner.Checked = user.IsOwner;
+
+            buttonCreate.Text = "Update";
+            this.Text = "Change data";
+        }
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
             Name = textBoxName.Text;
-            UserName = textBoxUserName.Text;
             UserName = textBoxUserName.Text;
             PassWord = textBoxPassword.Text;
             IsOwner = checkBoxIsOwner.Checked;

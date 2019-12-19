@@ -127,5 +127,19 @@ namespace SmartBike
             cmd.ExecuteScalar();
             this.Disconnect();
         }
+        public void UpdateUserData(User user, string name, string username, string password, bool isOwner)
+        {
+            string query = "UPDATE `user` SET `name` = @name, `username` = @username, `password` = @password, `is_owner` = @is_owner WHERE `user`.`id` = @user_id;";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@user_id", user.ID);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@is_owner", isOwner);
+
+            this.Connect();
+            cmd.ExecuteScalar();
+            this.Disconnect();
+        }
     }
 }

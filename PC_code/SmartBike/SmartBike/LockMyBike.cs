@@ -90,6 +90,12 @@ namespace SmartBike
             database.UpdateFingerprint(user, fingerID);
             Users = database.GetUsers();
         }
+
+        public void UpdateUser(User user, string name, string username, string password, bool isOwner)
+        {
+            database.UpdateUserData(user, name, username, password, isOwner);
+            Users = database.GetUsers();
+        }
         
         public void RemoveUser(User user)
         {
