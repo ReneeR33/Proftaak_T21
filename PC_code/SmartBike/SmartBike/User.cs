@@ -14,7 +14,8 @@ namespace SmartBike
         public string Password { get; private set; }
         public int FingerID { get; private set; }
         public bool IsOwner { get; private set; }
-        public User(string name, string userName, string password, int fingerID, bool isOwner)
+        public bool HasAccess { get; private set; }
+        public User(string name, string userName, string password, int fingerID, bool isOwner, bool hasAccess)
         {
             ID = 0;
             Name = name;
@@ -22,8 +23,9 @@ namespace SmartBike
             Password = password;
             FingerID = fingerID;
             IsOwner = isOwner;
+            HasAccess = hasAccess;
         }
-        public User(int id, string name, string userName, string password, int fingerID, bool isOwner)
+        public User(int id, string name, string userName, string password, int fingerID, bool isOwner, bool hasAccess)
         {
             ID = id;
             Name = name;
@@ -31,6 +33,7 @@ namespace SmartBike
             Password = password;
             FingerID = fingerID;
             IsOwner = isOwner;
+            HasAccess = hasAccess;
         }
         public override string ToString()
         {

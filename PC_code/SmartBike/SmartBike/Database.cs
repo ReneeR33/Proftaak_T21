@@ -77,8 +77,9 @@ namespace SmartBike
                         string password = (string)dataReader["password"];
                         int fingerID = (int)dataReader["finger_id"];
                         bool isOwner = (bool)dataReader["is_owner"];
+                        bool hasAccess = (bool)dataReader["has_access"];
 
-                        User user = new User(id, name, userName, password, fingerID, isOwner);
+                        User user = new User(id, name, userName, password, fingerID, isOwner, hasAccess);
 
                         users.Add(user);
                     }
@@ -117,25 +118,17 @@ namespace SmartBike
             this.Disconnect();
         }
 
-        public void UpdateFingerprint(User user, int fingerID)
+        public void UpdateUserData(User user, string name, string username, string password, int fingerID, bool isOwner, bool has_access)
         {
-            string query = "UPDATE `user` SET `finger_id` = @finger_id WHERE `user`.`id` = @user_id;";
-            MySqlCommand cmd = new MySqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@user_id", user.ID);
-            cmd.Parameters.AddWithValue("@finger_id", fingerID);
-            this.Connect();
-            cmd.ExecuteScalar();
-            this.Disconnect();
-        }
-        public void UpdateUserData(User user, string name, string username, string password, bool isOwner)
-        {
-            string query = "UPDATE `user` SET `name` = @name, `username` = @username, `password` = @password, `is_owner` = @is_owner WHERE `user`.`id` = @user_id;";
+            string query = "UPDATE `user` SET `name` = @name, `username` = @username, `password` = @password, `finger_id` = @finger_id, `is_owner` = @is_owner, `has_access`  = @has_access WHERE `user`.`id` = @user_id;";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@user_id", user.ID);
             cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@finger_id", fingerID);
             cmd.Parameters.AddWithValue("@is_owner", isOwner);
+            cmd.Parameters.AddWithValue("@has_access", has_access);
 
             this.Connect();
             cmd.ExecuteScalar();

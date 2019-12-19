@@ -25,16 +25,31 @@ namespace SmartBike
             lockMyBike = LMB;
             this.FormClosed += new FormClosedEventHandler(FormOwner_FormClosed);
             InitializeComponent();
-            listBoxUsers.DataSource = lockMyBike.Users;
+            UpdateListBox();
             label1.Text = lockMyBike.UserLoggedIn.Name;
             setLocation();
         }
         
-        void FormOwner_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormOwner_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (exitProgramWhenClosed)
             {
                 Application.Exit();
+            }
+        }
+
+        private void UpdateListBox()
+        {
+            listBoxAccess.Items.Clear();
+            listBoxUsers.Items.Clear();
+            
+            foreach(User user in lockMyBike.Users)
+            {
+                listBoxUsers.Items.Add(user);
+                if (user.HasAccess)
+                {
+                    listBoxAccess.Items.Add(user);
+                }
             }
         }
 
@@ -66,10 +81,9 @@ namespace SmartBike
 
             if(result == DialogResult.OK)
             {
-                User user = new User(formAddUser.Name, formAddUser.UserName, formAddUser.PassWord, -1, formAddUser.IsOwner);
+                User user = new User(formAddUser.Name, formAddUser.UserName, formAddUser.PassWord, -1, formAddUser.IsOwner, false);
                 lockMyBike.AddUser(user);
-                listBoxUsers.DataSource = null;
-                listBoxUsers.DataSource = lockMyBike.Users; 
+                UpdateListBox();
             }
         }
 
@@ -102,6 +116,10 @@ namespace SmartBike
                 User selectedUser = lockMyBike.Users[listBoxUsers.SelectedIndex];
                 if (selectedUser.FingerID == -1) buttonAddFingerprint.Enabled = true;
                 else buttonAddFingerprint.Enabled = false;
+
+                if (!selectedUser.HasAccess && selectedUser.FingerID != -1) buttonGiveAccess.Enabled = true;
+                else buttonGiveAccess.Enabled = false;
+                
             }
             else buttonAddFingerprint.Enabled = false;
         }
@@ -117,7 +135,7 @@ namespace SmartBike
             {
                 MessageBox.Show(lockMyBike.LastAddedFingerprintID.ToString());
                 lockMyBike.UpdateFingerprint(selectedUser, lockMyBike.LastAddedFingerprintID);
-                listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
+                UpdateListBox();
             }
             
         }
@@ -157,9 +175,19 @@ namespace SmartBike
             if(result == DialogResult.OK)
             {
                 lockMyBike.UpdateUser(selectedUser, formAddUser.Name, formAddUser.UserName, formAddUser.PassWord, formAddUser.IsOwner);
-                listBoxUsers.DataSource = null; listBoxUsers.DataSource = lockMyBike.Users;
+                UpdateListBox();
             }
             
+        }
+
+        private void ListBoxUsers_Click(object sender, EventArgs e)
+        {
+            listBoxAccess.SelectedIndex = -1;
+        }
+
+        private void ListBoxAccess_Click(object sender, EventArgs e)
+        {
+            listBoxUsers.SelectedIndex = -1;
         }
     }
 }

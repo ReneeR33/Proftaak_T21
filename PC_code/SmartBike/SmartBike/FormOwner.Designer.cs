@@ -33,9 +33,10 @@
             this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.Map = new GMap.NET.WindowsForms.GMapControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonChangeData = new System.Windows.Forms.Button();
             this.buttonGiveAccess = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxAccess = new System.Windows.Forms.ListBox();
             this.buttonAddFingerprint = new System.Windows.Forms.Button();
             this.buttonRemoveUser = new System.Windows.Forms.Button();
             this.buttonAddUser = new System.Windows.Forms.Button();
@@ -45,7 +46,6 @@
             this.buttonLogout = new System.Windows.Forms.Button();
             this.labelLocked = new System.Windows.Forms.Label();
             this.labelConnected = new System.Windows.Forms.Label();
-            this.buttonChangeData = new System.Windows.Forms.Button();
             this.groupBoxData.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +95,7 @@
             this.groupBox1.Controls.Add(this.buttonChangeData);
             this.groupBox1.Controls.Add(this.buttonGiveAccess);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.listBoxAccess);
             this.groupBox1.Controls.Add(this.buttonAddFingerprint);
             this.groupBox1.Controls.Add(this.buttonRemoveUser);
             this.groupBox1.Controls.Add(this.buttonAddUser);
@@ -107,15 +107,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "users";
             // 
+            // buttonChangeData
+            // 
+            this.buttonChangeData.Location = new System.Drawing.Point(22, 91);
+            this.buttonChangeData.Name = "buttonChangeData";
+            this.buttonChangeData.Size = new System.Drawing.Size(102, 22);
+            this.buttonChangeData.TabIndex = 15;
+            this.buttonChangeData.Text = "change data ";
+            this.buttonChangeData.UseVisualStyleBackColor = true;
+            this.buttonChangeData.Click += new System.EventHandler(this.ButtonChangeData_Click);
+            // 
             // buttonGiveAccess
             // 
+            this.buttonGiveAccess.Enabled = false;
             this.buttonGiveAccess.Location = new System.Drawing.Point(22, 170);
             this.buttonGiveAccess.Name = "buttonGiveAccess";
             this.buttonGiveAccess.Size = new System.Drawing.Size(102, 22);
             this.buttonGiveAccess.TabIndex = 14;
             this.buttonGiveAccess.Text = "give access";
             this.buttonGiveAccess.UseVisualStyleBackColor = true;
-            this.buttonGiveAccess.Click += new System.EventHandler(this.ButtonGiveAccess_Click);
             // 
             // label2
             // 
@@ -126,13 +136,14 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "access to bike";
             // 
-            // listBox1
+            // listBoxAccess
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(481, 35);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(142, 290);
-            this.listBox1.TabIndex = 10;
+            this.listBoxAccess.FormattingEnabled = true;
+            this.listBoxAccess.Location = new System.Drawing.Point(385, 35);
+            this.listBoxAccess.Name = "listBoxAccess";
+            this.listBoxAccess.Size = new System.Drawing.Size(238, 290);
+            this.listBoxAccess.TabIndex = 10;
+            this.listBoxAccess.Click += new System.EventHandler(this.ListBoxAccess_Click);
             // 
             // buttonAddFingerprint
             // 
@@ -170,8 +181,9 @@
             this.listBoxUsers.FormattingEnabled = true;
             this.listBoxUsers.Location = new System.Drawing.Point(141, 35);
             this.listBoxUsers.Name = "listBoxUsers";
-            this.listBoxUsers.Size = new System.Drawing.Size(334, 290);
+            this.listBoxUsers.Size = new System.Drawing.Size(238, 290);
             this.listBoxUsers.TabIndex = 0;
+            this.listBoxUsers.Click += new System.EventHandler(this.ListBoxUsers_Click);
             this.listBoxUsers.SelectedIndexChanged += new System.EventHandler(this.ListBoxUsers_SelectedIndexChanged);
             // 
             // label1
@@ -221,16 +233,6 @@
             this.labelConnected.TabIndex = 9;
             this.labelConnected.Text = "connected";
             // 
-            // buttonChangeData
-            // 
-            this.buttonChangeData.Location = new System.Drawing.Point(22, 91);
-            this.buttonChangeData.Name = "buttonChangeData";
-            this.buttonChangeData.Size = new System.Drawing.Size(102, 22);
-            this.buttonChangeData.TabIndex = 15;
-            this.buttonChangeData.Text = "change data ";
-            this.buttonChangeData.UseVisualStyleBackColor = true;
-            this.buttonChangeData.Click += new System.EventHandler(this.ButtonChangeData_Click);
-            // 
             // FormOwner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,7 +271,7 @@
         private GMap.NET.WindowsForms.GMapControl Map;
         private System.Windows.Forms.Button buttonGiveAccess;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxAccess;
         private System.Windows.Forms.Button buttonChangeData;
     }
 }
