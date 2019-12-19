@@ -50,7 +50,7 @@
             // 
             this.checkBoxSecond.AutoCheck = false;
             this.checkBoxSecond.AutoSize = true;
-            this.checkBoxSecond.Location = new System.Drawing.Point(21, 58);
+            this.checkBoxSecond.Location = new System.Drawing.Point(105, 35);
             this.checkBoxSecond.Name = "checkBoxSecond";
             this.checkBoxSecond.Size = new System.Drawing.Size(87, 17);
             this.checkBoxSecond.TabIndex = 1;
@@ -61,7 +61,7 @@
             // 
             this.checkBoxAdded.AutoCheck = false;
             this.checkBoxAdded.AutoSize = true;
-            this.checkBoxAdded.Location = new System.Drawing.Point(21, 81);
+            this.checkBoxAdded.Location = new System.Drawing.Point(198, 35);
             this.checkBoxAdded.Name = "checkBoxAdded";
             this.checkBoxAdded.Size = new System.Drawing.Size(105, 17);
             this.checkBoxAdded.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             this.button.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button.Enabled = false;
-            this.button.Location = new System.Drawing.Point(112, 113);
+            this.button.Location = new System.Drawing.Point(111, 69);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(80, 25);
             this.button.TabIndex = 3;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 150);
+            this.ClientSize = new System.Drawing.Size(312, 113);
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.button);
             this.Controls.Add(this.checkBoxAdded);

@@ -57,7 +57,7 @@ int fingerID = -1;
 
 int buttonPinValue;
 
-State state = OPEN_LOCK;
+State state =  OPEN_LOCK; //OPEN_LOCK
 LockState lockState = LOCKED;
 Event event;
 
@@ -106,7 +106,7 @@ void loop() {
     case BUTTON_PRESSED:
       switch (state) {
         case OPEN_LOCK:
-          Serial.print("#ADDED_FINGERPRINT:5%");
+          //Serial.print("#ADDED_FINGERPRINT:5%");
           delay(200);
           CloseLock();
           break;
