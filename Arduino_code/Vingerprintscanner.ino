@@ -3,7 +3,10 @@
 
 void StartFingerprintscanner() {
   
-  finger.begin(57600);
+  while (!Serial); 
+  delay(100);
+ 
+  //finger.begin(57600);
 }
 
 int GetFirstFreeSpace(){
@@ -11,14 +14,14 @@ int GetFirstFreeSpace(){
   for (int i = 1; i < 11; i++){
     EEPROM.get(i, value);
     if(value == 0){
-      //value = 1; EEPROM.put(i, value);
+      value = 1; EEPROM.put(i, value);
       return i;
     }
   }
   return -1;
 }
 
-int ReadFingerprint() {
+/*int ReadFingerprint() {
   uint8_t p = finger.getImage();
     if (p != FINGERPRINT_OK)  return -1;
 
@@ -30,9 +33,9 @@ int ReadFingerprint() {
 
     return finger.fingerID;
     
-}
+}*/
 
-/*int ReadFingerprintK(){
+int ReadFingerprintK(){
   char customKey = customKeypad.getKey();
   
   if (customKey) {
@@ -50,6 +53,21 @@ int ReadFingerprint() {
     }
   }
   return -1;
+}
+
+/*bool RemoveFingerprint(int id){
+  if(id > 0 && id < 11){
+    byte value = 0;
+    finger.deleteModel(id);
+    EEPROM.put(id, value);
+
+    Serial.print("Deleted fingeprint with id = ");
+    Serial.println(id);
+    Serial.println("#DELETION_SUCCESS%");
+    
+    return true;
+  }
+  return false;
 }*/
 
 bool ChangeAccess(Accessibility access, int id){
@@ -72,22 +90,7 @@ bool ChangeAccess(Accessibility access, int id){
   return false;
 }
 
-bool RemoveFingerprint(int id){
-  if(id > 0 && id < 11){
-    byte value = 0;
-    finger.deleteModel(id);
-    EEPROM.put(id, value);
-
-    Serial.print("Deleted fingeprint with id = ");
-    Serial.println(id);
-    Serial.println("#DELETION_SUCCESS%");
-    
-    return true;
-  }
-  return false;
-}
-
-/*bool RemoveFingerprintK(int id){
+bool RemoveFingerprintK(int id){
   if(id > 0 && id < 11){
     byte value = 0;
     //finger.deleteModel(id);
@@ -100,4 +103,4 @@ bool RemoveFingerprint(int id){
     return true;
   }
   return false;
-}*/
+}

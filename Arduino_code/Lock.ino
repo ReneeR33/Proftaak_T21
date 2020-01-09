@@ -6,7 +6,6 @@ void OpenLock(){
     lockState = UNLOCKED;
     digitalWrite(ledPin, HIGH);
     endTimeServo = millis() + 500;
-    //Serial.println("Lock");
   }
 }
 
@@ -16,7 +15,6 @@ void CloseLock(){
     lockState = LOCKED;
     digitalWrite(ledPin, LOW);
     endTimeServo = millis() + 500;
-    //Serial.println("Lock");
   }
 }
 
