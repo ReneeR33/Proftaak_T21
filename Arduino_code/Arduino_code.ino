@@ -9,6 +9,7 @@
 //#include <Keypad.h>
 #include <Servo.h>
 #include <Adafruit_Fingerprint.h>
+#include <TinyGPS++.h>
 
 #define ledPin 10
 #define buttonPin 12
@@ -40,13 +41,15 @@ enum Event {
 Servo servo;
 SoftwareSerial mySerial(2, 3);
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
+TinyGPSPlus gps;
+SoftwareSerial GPSSerial(8, 7);
 
 String Message;
 unsigned long endTime = 0;
 int fingerID = 0;
 
 int buttonPinValue;
-
+int timer = millis();
 State state =  OPEN_LOCK; //OPEN_LOCK
 LockState lockState = LOCKED;
 Event event;
@@ -57,7 +60,9 @@ void setup() {
   pinMode(buttonPin, INPUT);
   pinMode(ledPin, OUTPUT);
   StartFingerprintscanner();
-
+  gps.encode(GPSSerial.read());
+  GPSSerial.begin(115200);
+  
   Serial.begin(9600);  // test
   Serial.println("start");
   //digitalWrite(ledPin, HIGH);
@@ -152,8 +157,51 @@ void loop() {
       }
       break;
   }
-
+  SendCoordinates();
   if (state == ADD_FINGERPRINT) {
     addFingerprint();
+  }
+}
+
+void SendCoordinates()
+{
+  switch (lockState) {
+    case LOCKED:
+      if(LocationIsChanged())
+      {
+        Serial.print("#LATITUDE:");
+        Serial.print(GetLatitude());
+        Serial.print("%");
+        Serial.print("#LONGITUDE:");
+        Serial.print(GetLongitude());
+        Serial.print("%");
+      }
+      break;
+
+    case UNLOCKED:
+      if(TimerExpired())
+      {
+        Serial.print("#LATITUDE:");
+        Serial.print(GetLatitude());
+        Serial.print("%");
+        Serial.print("#LONGITUDE:");
+        Serial.print(GetLongitude());
+        Serial.print("%");
+      }
+      break;    
+
+    break;
+  }
+}
+
+bool TimerExpired()
+{
+  if ((millis() - timer) > 10000)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
   }
 }
