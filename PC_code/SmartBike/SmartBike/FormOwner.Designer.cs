@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.Map = new GMap.NET.WindowsForms.GMapControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -50,16 +50,16 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // groupBoxData
             // 
             this.groupBoxData.Controls.Add(this.Map);
-            this.groupBoxData.Location = new System.Drawing.Point(31, 41);
+            this.groupBoxData.Location = new System.Drawing.Point(31, 47);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(422, 293);
+            this.groupBoxData.Size = new System.Drawing.Size(422, 302);
             this.groupBoxData.TabIndex = 1;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "data bike";
@@ -86,7 +86,7 @@
             this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(401, 268);
+            this.Map.Size = new System.Drawing.Size(390, 268);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
             // 
@@ -189,7 +189,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 12);
+            this.label1.Location = new System.Drawing.Point(29, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 3;
@@ -197,7 +197,7 @@
             // 
             // buttonLock
             // 
-            this.buttonLock.Location = new System.Drawing.Point(31, 358);
+            this.buttonLock.Location = new System.Drawing.Point(32, 367);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(105, 24);
             this.buttonLock.TabIndex = 6;
@@ -207,7 +207,7 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(96, 7);
+            this.buttonLogout.Location = new System.Drawing.Point(97, 7);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(79, 22);
             this.buttonLogout.TabIndex = 4;
@@ -227,7 +227,7 @@
             // labelConnected
             // 
             this.labelConnected.AutoSize = true;
-            this.labelConnected.Location = new System.Drawing.Point(198, 12);
+            this.labelConnected.Location = new System.Drawing.Point(182, 12);
             this.labelConnected.Name = "labelConnected";
             this.labelConnected.Size = new System.Drawing.Size(58, 13);
             this.labelConnected.TabIndex = 9;
@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1147, 411);
+            this.ClientSize = new System.Drawing.Size(1147, 414);
             this.Controls.Add(this.labelConnected);
             this.Controls.Add(this.labelLocked);
             this.Controls.Add(this.buttonLock);
@@ -256,7 +256,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.GroupBox groupBoxData;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonAddUser;

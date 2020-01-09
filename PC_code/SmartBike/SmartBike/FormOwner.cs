@@ -67,7 +67,18 @@ namespace SmartBike
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            //niet nodig
+            try
+            {
+                lockMyBike.serial.Connect();
+            }
+            catch
+            {
+                labelConnected.Text = "disconnected";
+            }
+            finally
+            {
+                lockMyBike.serial.Disconnect();
+            }
         }
 
         private void ButtonLock_Click(object sender, EventArgs e)
