@@ -6,29 +6,13 @@
 // WHITE - 3
 //---------------
 
-#include <Keypad.h>
+//#include <Keypad.h>
 #include <Servo.h>
 #include <Adafruit_Fingerprint.h>
 
 #define ledPin 10
 #define buttonPin 12
 #define servoPin 11
-
-const byte ROWS = 4; //four rows
-const byte COLS = 4; //four columns
-
-//keypad
-char hexaKeys[ROWS][COLS] = {
-  {'1', '2', '3', 'A'},
-  {'4', '5', '6', 'B'},
-  {'7', '8', '9', 'C'},
-  {'*', '0', '#', 'D'}
-};
-byte rowPins[ROWS] = {9, 8, 7, 6}; 
-byte colPins[COLS] = {5, 4, 3, 2}; 
-
-Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
-//////////////////////////////////////////////////////////////////////////////
 
 enum Accessibility {
   NO_ACCESS,
@@ -54,12 +38,12 @@ enum Event {
 };
 
 Servo servo;
-//SoftwareSerial mySerial(2, 3);
-//Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
+SoftwareSerial mySerial(2, 3);
+Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
 String Message;
 unsigned long endTime = 0;
-int fingerID = -1;
+int fingerID = 0;
 
 int buttonPinValue;
 
@@ -75,21 +59,19 @@ void setup() {
   StartFingerprintscanner();
 
   Serial.begin(9600);  // test
+  Serial.println("start");
+  //digitalWrite(ledPin, HIGH);
 }
 
 void loop() {
   buttonPinValue = digitalRead(buttonPin);
   Message = CheckMessage();
 
-  if(state != ADD_FINGERPRINT) {
-    fingerID = ReadFingerprintK();
-  }
-  /*if (millis() > endTime && state == OPEN_LOCK) {
-
-    fingerID = ReadFingerprint();
+  if(state != ADD_FINGERPRINT && millis() > endTime) {
     endTime = millis() + 50;
+    fingerID = ReadFingerprint();
+    if(fingerID > 0) Serial.println(fingerID);
   }
-  */
   
   //Lock();
   if (Message != "") {
@@ -131,7 +113,7 @@ void loop() {
         Message.remove(0, 19);
         int id = Message.toInt();
         if (id > 0) {
-          RemoveFingerprintK(id);
+          RemoveFingerprint(id);
         }
       }
       else if (Message == "OPEN_LOCK" || Message == "CLOSE_LOCK"){
@@ -172,6 +154,6 @@ void loop() {
   }
 
   if (state == ADD_FINGERPRINT) {
-    addFingerprintK();
+    addFingerprint();
   }
 }
